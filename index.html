@@ -78,33 +78,36 @@
     </div>
 
     <!-- Navbar -->
-    <header class="navbar">
-      <div class="container nav-container">
-        <a class="logo-wrapper" href="#top" aria-label="Go to home">
-          <img src="assets/images/logo-header.png" alt="Veteran Detail Services" class="logo" />
-        </a>
+<header class="navbar">
+  <div class="container nav-container">
+    <a class="logo-wrapper" href="#top" aria-label="Go to home">
+      <img src="assets/images/logo-header.png" alt="Veteran Detail Services" class="logo" />
+    </a>
 
-        <button class="nav-toggle" aria-expanded="false" aria-controls="primaryNav">
-          <span class="sr-only">Open menu</span>
-          ☰
-        </button>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primaryNav">
+      <span class="sr-only">Open menu</span>
+      ☰
+    </button>
 
-        <nav class="nav" id="primaryNav" aria-label="Primary">
-          <ul class="nav-links">
-            <li><a href="#services">Packages</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#launch">Launch Offer</a></li>
-            <li><a href="#areas">Service Area</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contact">Quote</a></li>
-          </ul>
-        </nav>
+    <nav class="nav" id="primaryNav" aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="#services">Packages</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#launch">Launch Offer</a></li>
+        <li><a href="#areas">Service Area</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Quote</a></li>
+        <li><a href="#booking" class="nav-book">Book</a></li>
+      </ul>
+    </nav>
 
-        <div class="nav-cta">
-          <a href="#contact" class="btn-primary">Request Quote</a>
-        </div>
-      </div>
-    </header>
+    <div class="nav-cta">
+      <a href="https://orbisx.ca/app/booknow/VSncs?trackingSource=Header" class="btn-primary">
+        Book Appointment
+      </a>
+    </div>
+  </div>
+</header>
 
     <main>
       <!-- Hero -->
@@ -124,8 +127,8 @@
           </p>
 
           <div class="hero-buttons">
-            <a href="#contact" class="btn-primary large">Start Your Quote</a>
-            <a href="tel:+19412361478" class="btn-secondary large">Call Now</a>
+            <a href="https://orbisx.ca/app/booknow/VSncs?trackingSource=Hero" class="btn-primary large">Book Appointment</a>
+            <a href="#booking" class="btn-secondary large">View Bookings</a>
           </div>
 
           <p class="hero-social">
@@ -193,7 +196,7 @@
               </div>
 
               <div class="cta-row">
-                <a href="#contact" class="btn-primary">Get a Fast Quote</a>
+                <a href="#booking" class="btn-primary">Book an Appointment</a>
               </div>
             </div>
 
@@ -248,7 +251,7 @@
               </ul>
 
               <p class="card-meta">From $124.99</p>
-              <a class="card-link" href="#contact">Request Quote →</a>
+              <a class="card-link" href="https://orbisx.ca/app/booknow/VSncs?trackingSource=PkgMaintenance">Book Now →</a>
             </article>
 
             <article class="card">
@@ -272,7 +275,7 @@
               </ul>
 
               <p class="card-meta">From $149.99</p>
-              <a class="card-link" href="#contact">Request Quote →</a>
+              <a class="card-link" href="https://orbisx.ca/app/booknow/VSncs?trackingSource=PkgInterior">Book Now →</a>
             </article>
 
             <article class="card">
@@ -293,7 +296,7 @@
               </ul>
 
               <p class="card-meta">From $249.99</p>
-              <a class="card-link" href="#contact">Request Quote →</a>
+              <a class="card-link" href="https://orbisx.ca/app/booknow/VSncs?trackingSource=PkgFull">Book Now →</a>
             </article>
           </div>
         </div>
@@ -358,9 +361,12 @@
               </ul>
 
               <div class="launch-actions">
-                <a href="#contact" class="btn-primary">Request a Quote</a>
-                <a href="tel:+19412361478" class="btn-secondary dark">Call Now</a>
+                <a href="https://orbisx.ca/app/booknow/VSncs?trackingSource=LaunchOffer" class="btn-primary">Book Appointment</a>
+                <a href="#booking" class="btn-secondary dark">View Bookings</a>
               </div>
+                <p class="mini-note" style="margin-top:12px;">
+                  Founding Offer: Use code <strong>FOUNDING25</strong> for $25 off (first 25 bookings).
+                </p>
             </div>
 
             <div class="launch-card alt">
@@ -460,11 +466,41 @@
         </div>
       </section>
 
+      <!-- Booking (OrbisX Embed) -->
+      <section id="booking" class="section section-alt">
+        <div class="container">
+        <div class="section-header center">
+         <h2 class="section-title center">Book Your Mobile Detail</h2>
+         <p class="section-subtitle center">
+            Choose your package, vehicle size, and preferred time. Add-ons are optional.
+         </p>
+          <p class="section-subtitle center">
+           <strong>Founding Offer:</strong> Use code <strong>FOUNDING25</strong> for $25 off your first appointment (first 25 bookings).
+         </p>
+        </div>
+
+        <div class="embed-wrap">
+          <iframe
+            src="https://orbisx.ca/app/booknow/VSncs?trackingSource=Embedded"
+           style="border:0px #ffffff none; width:100%; max-width:1100px;"
+           name="OrbisXbookingForm"
+           id="OrbisXbookingForm"
+           scrolling="no"
+           frameborder="0"
+           marginheight="0"
+           marginwidth="0"
+           height="3000"
+           allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
       <!-- Contact -->
       <section id="contact" class="section section-alt">
         <div class="container">
           <div class="section-header center">
-            <h2 class="section-title center">Get a Fast Quote</h2>
+            <h2 class="section-title center">Prefer a quote first?</h2>
             <p class="section-subtitle center">
               Select your vehicle size, condition, and package to see an instant estimate range.
               Then send your request and we’ll confirm details.
@@ -703,6 +739,14 @@
             "https://www.instagram.com/veterandetailservices.swfl/"
          ]
         }
-</script>
+    </script>
+    <script>
+      window.onmessage = (e) => {
+        if (e.data && Object.prototype.hasOwnProperty.call(e.data, "frameHeight")) {
+          const f = document.getElementById("OrbisXbookingForm");
+        if (f) f.style.height = `${e.data.frameHeight + 30}px`;
+        }
+      };
+    </script>
   </body>
 </html>
