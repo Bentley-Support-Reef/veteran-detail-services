@@ -162,42 +162,6 @@ a{ color: inherit; text-decoration: none; }
 
 .nav-links a:hover{ opacity: 1; }
 
-/* Subtle highlight for Book nav item */
-.nav-links a[href="#booking"]{
-  color: var(--navy);
-  position: relative;
-}
-
-.nav-links a[href="#booking"]::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 100%;
-  height: 2px;
-  background: rgba(61,180,231,0.55);
-  border-radius: 999px;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.nav-links a[href="#booking"]:hover::after{
-  opacity: 1;
-}
-
-/* Make "Book" stand out slightly */
-.nav-links a.nav-book{
-  padding: 0.45rem 0.8rem;
-  border-radius: 999px;
-  border: 1px solid rgba(12,35,64,0.25);
-  background: rgba(12,35,64,0.06);
-  opacity: 1;
-}
-
-.nav-links a.nav-book:hover{
-  background: rgba(12,35,64,0.10);
-}
-
 .nav-cta{ display: flex; }
 
 /* Mobile nav open state (used by JS) */
@@ -217,7 +181,7 @@ a{ color: inherit; text-decoration: none; }
 }
 
 @media (max-width: 600px){
-    .gallery-grid{ grid-template-columns: 1fr; }
+  .gallery-grid{ grid-template-columns: 1fr; }
 }
 
 /* =========================
@@ -282,32 +246,6 @@ a{ color: inherit; text-decoration: none; }
 }
 
 /* =========================
-   ORBISX EMBED POLISH
-========================= */
-.embed-wrap{
-  display: flex;
-  justify-content: center;
-  padding: 0.25rem 0;
-}
-
-#OrbisXbookingForm{
-  width: 100% !important;
-  max-width: 1100px;
-  border-radius: 18px;
-  background: #ffffff;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-  overflow: hidden;
-}
-
-/* Prevent awkward extra whitespace on smaller screens */
-@media (max-width: 600px){
-  #OrbisXbookingForm{
-    border-radius: 14px;
-  }
-}
-
-/* =========================
    SECTIONS
 ========================= */
 .section{ padding: 4.25rem 0; }
@@ -340,7 +278,6 @@ section{
 /* =========================
    SEO
 ========================= */
-
 .areas-seo{
   max-width: 780px;
   margin: 0.75rem auto 2rem auto;
@@ -544,11 +481,22 @@ section{
   gap: 0.75rem;
 }
 
+/* Center single premium card (fallback / broad support) */
+.cards{
+  justify-items: stretch;
+}
+
+.cards > .card:only-child{
+  justify-self: center;
+  width: 100%;
+  max-width: 620px;
+}
+
 .card-top{
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
-  align-items: flex-start; /* prevents any stretching */
+  align-items: flex-start;
   margin-top: 0.25rem;
 }
 
@@ -603,6 +551,17 @@ section{
   text-decoration: underline;
 }
 
+/* Center Premium (Tier 3) section card */
+#services .cards:last-of-type{
+  display: flex;
+  justify-content: center;
+}
+
+#services .cards:last-of-type .card{
+  width: 100%;
+  max-width: 560px;
+}
+
 /* =========================
    GALLERY
 ========================= */
@@ -638,9 +597,9 @@ section{
 ========================= */
 .launch-grid{
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .launch-card{
@@ -649,6 +608,8 @@ section{
   border-radius: 18px;
   padding: 1.6rem;
   box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
 }
 
 .launch-card.alt{
@@ -712,6 +673,32 @@ section{
   font-size: 0.95rem;
   color: var(--muted);
   font-weight: 650;
+}
+
+.founding-offer{
+  margin-top: auto;
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  background: rgba(61,180,231,0.10);
+  border: 1px solid rgba(61,180,231,0.35);
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.coupon-code{
+  background: var(--navy);
+  color: #fff;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.offer-limit{
+  color: var(--muted);
+  font-weight: 700;
+  margin-left: 0.35rem;
 }
 
 /* =========================
@@ -790,7 +777,7 @@ section{
 ========================= */
 .contact-grid{
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
   align-items: start;
 }
@@ -934,10 +921,10 @@ section{
 /* Contact card */
 .contact-card{
   background: #fff;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(12,35,64,0.14);
   border-radius: 18px;
-  padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
+  padding: 1.6rem;
+  box-shadow: 0 16px 40px rgba(12,35,64,0.08);
 }
 
 .contact-card h3{
@@ -962,6 +949,152 @@ section{
   display: grid;
   gap: 0.75rem;
   margin: 1rem 0;
+}
+
+/* What happens next block */
+.what-next{
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  margin-top: 1.25rem;
+}
+
+.what-next h4{
+  font-size: 1.05rem;
+  font-weight: 950;
+  color: var(--navy);
+  margin-bottom: 0.6rem;
+}
+
+.next-steps{
+  padding-left: 1.15rem;
+  margin-bottom: 0.9rem;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.next-steps li{
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.what-next .mini-note{
+  font-weight: 750;
+  margin-top: 0.5rem;
+}
+
+/* Payment options list (contact card) */
+.contact-card .payments{
+  margin-top: 0.85rem;
+}
+
+.contact-card .payments-title{
+  font-weight: 950;
+  color: var(--navy);
+  margin-bottom: 0.35rem;
+}
+
+.contact-card .payments-list{
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.25rem 0 0;
+  padding: 0;
+}
+
+.contact-card .payments-list li{
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--muted);
+  font-weight: 750;
+}
+
+.contact-card .payments-list li::before{
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(61,180,231,0.85);
+  flex: 0 0 auto;
+}
+
+/* Payment icons */
+.payment-icons{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.7rem;
+  margin: 0.9rem 0 1.3rem;
+}
+
+/* Brand-colored payment icons */
+.pay-icon{
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(12,35,64,0.12);
+  box-shadow: 0 6px 16px rgba(12,35,64,0.05);
+  font-weight: 800;
+  font-size: 0.9rem;
+  transition: transform 0.18s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.pay-icon:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(12,35,64,0.10);
+  border-color: rgba(61,180,231,0.45);
+}
+
+.pay-icon img{
+  margin-right: 2px;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+}
+
+.pay-svg{
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke-width: 2;
+}
+
+/* Normalize logo sizes */
+.pay-logo{
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Apple Pay logo tends to be small */
+.pay-icon img[src*="applepay"]{
+  transform: scale(1.75);
+  transform-origin: center;
+}
+
+/* Cash App logo tends to be small */
+.pay-icon img[src*="cashapp"]{
+  transform: scale(1.25);
+}
+
+/* Brand colors */
+.pay-icon.cash .pay-svg{ stroke: #0c2340; }
+.pay-icon.venmo .pay-svg{ stroke: #3D95CE; }
+.pay-icon.cashapp .pay-svg{ stroke: #00C244; }
+.pay-icon.zelle .pay-svg{ stroke: #6C1EDC; }
+.pay-icon.applepay .pay-svg{ stroke: #000000; }
+.pay-icon.card .pay-svg{ stroke: #144a75; }
+
+/* Secure note */
+.secure-note{
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--muted);
 }
 
 /* Contact social icons */
