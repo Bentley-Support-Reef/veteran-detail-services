@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice Builder | Veteran Detail Services</title>
+    <link rel="stylesheet" href="invoice.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="builder-page">
+      <section class="builder-shell">
+        <div class="builder-header">
+          <div class="brand">
+            <img src="../assets/images/logo-header.png" alt="Veteran Detail Services" class="brand-logo" />
+            <div>
+              <p class="eyebrow">Internal Use</p>
+              <h1>Invoice Builder</h1>
+              <p class="subcopy">Create the final invoice after the service is complete.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="builder-layout">
+          <form id="invoiceForm" class="builder-form">
+            <div class="form-section">
+              <h2>Customer Information</h2>
+              <div class="form-grid">
+                <label>
+                  Customer Name
+                  <input type="text" id="customerName" placeholder="John Smith" />
+                </label>
+
+                <label>
+                  Phone
+                  <input type="text" id="customerPhone" placeholder="(941) 555-1234" />
+                </label>
+
+                <label>
+                  Email
+                  <input type="email" id="customerEmail" placeholder="john@email.com" />
+                </label>
+
+                <label>
+                  City
+                  <input type="text" id="customerCity" placeholder="Punta Gorda" />
+                </label>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h2>Vehicle Information</h2>
+              <div class="form-grid">
+                <label>
+                  Vehicle
+                  <input type="text" id="vehicle" placeholder="2020 Toyota Camry" />
+                </label>
+
+                <label>
+                  Vehicle Size
+                  <select id="vehicleSize">
+                    <option value="sedan">Sedan / Coupe</option>
+                    <option value="suv">SUV / Truck</option>
+                    <option value="large">Large SUV / 3-Row</option>
+                  </select>
+                </label>
+
+                <label>
+                  Vehicle Condition
+                  <select id="vehicleCondition">
+                    <option value="light">Light</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="heavy">Heavy</option>
+                  </select>
+                </label>
+
+                <label>
+                  Estimate Reference (optional)
+                  <input type="text" id="estimateReference" placeholder="EST-20260307-4821" />
+                </label>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h2>Invoice Details</h2>
+              <div class="form-grid">
+                <label>
+                  Invoice Number
+                  <input type="text" id="invoiceNumber" readonly />
+                </label>
+
+                <label>
+                  Invoice Date
+                  <input type="date" id="invoiceDate" />
+                </label>
+
+                <label>
+                  Payment Method
+                  <select id="paymentMethod">
+                    <option value="Cash">Cash</option>
+                    <option value="Venmo">Venmo</option>
+                    <option value="Cash App">Cash App</option>
+                    <option value="Zelle">Zelle</option>
+                    <option value="Apple Pay">Apple Pay</option>
+                    <option value="Credit / Debit">Credit / Debit</option>
+                  </select>
+                </label>
+
+                <label>
+                  Payment Status
+                  <select id="paymentStatus">
+                    <option value="Paid" selected>Paid</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Partially Paid">Partially Paid</option>
+                    <option value="Unpaid">Unpaid</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h2>Service Selection</h2>
+              <div class="form-grid">
+                <label class="full">
+                  Package
+                  <select id="servicePackage">
+                    <option value="essential-exterior">Essential Exterior Wash ($55)</option>
+                    <option value="essential-interior">Essential Interior Clean ($75)</option>
+                    <option value="essential-bundle">Essential Clean Package ($100)</option>
+                    <option value="tier2-exterior">Exterior Protection Detail ($95)</option>
+                    <option value="tier2-interior">Interior Restoration Detail ($150)</option>
+                    <option value="tier2-bundle" selected>Complete Restoration Package ($200)</option>
+                    <option value="tier3">Signature Transformation Detail ($349)</option>
+                  </select>
+                </label>
+              </div>
+
+              <fieldset class="addons">
+                <legend>Add-ons</legend>
+
+                <label class="check">
+                  <input type="checkbox" class="addon" value="clay" />
+                  Paint Decontamination (+$50)
+                </label>
+
+                <label class="check">
+                  <input type="checkbox" class="addon" value="headlights" />
+                  Headlight Restoration (+$150)
+                </label>
+
+                <label class="check">
+                  <input type="checkbox" class="addon" value="engine" />
+                  Engine Bay Cleaning (+$50)
+                </label>
+
+                <label class="check">
+                  <input type="checkbox" class="addon" value="petHairLight" />
+                  Pet Hair Removal – Light (+$40)
+                </label>
+
+                <label class="check">
+                  <input type="checkbox" class="addon" value="petHairHeavy" />
+                  Pet Hair Removal – Heavy (+$65)
+                </label>
+              </fieldset>
+            </div>
+
+            <div class="form-section">
+              <h2>Pricing Details</h2>
+              <div class="form-grid">
+                <label>
+                  Discount ($)
+                  <input type="number" id="discount" min="0" step="0.01" value="0" />
+                </label>
+
+                <label>
+                  Sales Tax Rate (%)
+                  <input type="number" id="taxRate" min="0" step="0.01" value="7" />
+                </label>
+
+                <label>
+                  Amount Paid ($)
+                  <input type="number" id="amountPaid" min="0" step="0.01" value="0" />
+                </label>
+
+                <label>
+                  Balance Due
+                  <input type="text" id="balanceDueDisplay" readonly />
+                </label>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h2>Notes</h2>
+              <label>
+                Invoice Notes
+                <textarea
+                  id="invoiceNotes"
+                  rows="5"
+                  placeholder="Completed services, final condition notes, warranty notes, anything else."
+                ></textarea>
+              </label>
+            </div>
+          </form>
+
+          <aside class="builder-preview">
+            <div class="summary-card">
+              <h2>Invoice Summary</h2>
+
+              <div class="summary-row">
+                <span>Base Service</span>
+                <strong id="summaryBase">$0.00</strong>
+              </div>
+
+              <div class="summary-row">
+                <span>Add-ons</span>
+                <strong id="summaryAddons">$0.00</strong>
+              </div>
+
+              <div class="summary-row">
+                <span>Discount</span>
+                <strong id="summaryDiscount">-$0.00</strong>
+              </div>
+
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <strong id="summarySubtotal">$0.00</strong>
+              </div>
+
+              <div class="summary-row">
+                <span>Sales Tax</span>
+                <strong id="summaryTax">$0.00</strong>
+              </div>
+
+              <div class="summary-row total">
+                <span>Total Invoice</span>
+                <strong id="summaryTotal">$0.00</strong>
+              </div>
+
+              <div class="summary-row">
+                <span>Amount Paid</span>
+                <strong id="summaryPaid">$0.00</strong>
+              </div>
+
+              <div class="summary-row">
+                <span>Balance Due</span>
+                <strong id="summaryBalance">$0.00</strong>
+              </div>
+            </div>
+
+            <div class="output-card">
+              <div class="output-header">
+                <h2>Generated Invoice</h2>
+                <div class="output-actions">
+                  <button type="button" id="printInvoice" class="btn-secondary">Print</button>
+                  <button type="button" id="copyInvoice" class="btn-secondary">Copy Text</button>
+                </div>
+              </div>
+
+              <div id="invoiceDocument" class="doc-preview"></div>
+
+              <label class="text-output-label">
+                Plain Text Copy
+                <textarea id="invoiceOutput" readonly rows="12"></textarea>
+              </label>
+
+              <p class="helper">
+                Use the document preview for printing and the plain text box for SMS or email.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <script src="invoice.js"></script>
+  </body>
+</html>
