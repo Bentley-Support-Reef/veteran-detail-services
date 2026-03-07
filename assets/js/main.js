@@ -57,83 +57,107 @@ questions.forEach((btn) => {
 // Instant estimate calculator
 // ---------------------------
 
-// Base package starting ranges by size (low, high)
-const packagePricing = {
-  maintenance: {
-    sedan: [169, 209],
-    suv: [189, 229],
-    large: [209, 249],
+const basePrices = {
+
+  "essential-bundle": {
+    sedan:100,
+    suv:115,
+    large:130
   },
-  interior: {
-    sedan: [229, 289],
-    suv: [269, 339],
-    large: [309, 389],
+
+  "essential-interior": {
+    sedan:75,
+    suv:85,
+    large:95
   },
-  full: {
-    sedan: [329, 399],
-    suv: [379, 459],
-    large: [429, 529],
+
+  "essential-exterior": {
+    sedan:55,
+    suv:65,
+    large:75
   },
+
+  "tier2-bundle": {
+    sedan:200,
+    suv:220,
+    large:240
+  },
+
+  "tier2-interior": {
+    sedan:150,
+    suv:165,
+    large:180
+  },
+
+  "tier2-exterior": {
+    sedan:95,
+    suv:105,
+    large:115
+  },
+
+  "tier3": {
+    sedan:349,
+    suv:379,
+    large:409
+  }
+
 };
 
-// Condition modifiers (adds to low/high)
-const conditionAdd = {
-  light: [0, 0],
-  moderate: [20, 50],
-  heavy: [50, 120],
+const conditionAdjust = {
+  light:0,
+  moderate:25,
+  heavy:60
 };
 
-// Add-ons ranges
-const addonRanges = {
-  engine: [40, 60],
-  headlights: [100, 140],
-  odor: [50, 95],
-  decon: [50, 90],
-  petHair: [30, 80],
+const addonPrices = {
+  clay:50,
+  headlights:150,
+  engine:50,
+  petHairLight:40,
+  petHairHeavy:65
 };
 
-function formatMoney(n) {
-  return `$${n.toString()}`;
+function formatMoney(n){
+  return "$"+n;
 }
 
-function calcEstimate() {
-  const size = document.getElementById("vehicleSize")?.value;
-  const condition = document.getElementById("vehicleCondition")?.value;
-  const pkg = document.getElementById("servicePackage")?.value;
+function calcEstimate(){
 
-  const rangeEl = document.getElementById("estimateRange");
-  if (!rangeEl) return;
+  const size=document.getElementById("vehicleSize")?.value;
+  const condition=document.getElementById("vehicleCondition")?.value;
+  const pkg=document.getElementById("servicePackage")?.value;
 
-  if (!size || !condition || !pkg) {
-    rangeEl.textContent = "Select size, condition, and package to see a range.";
+  const range=document.getElementById("estimateRange");
+
+  if(!size||!condition||!pkg){
+    range.textContent="Select size, condition, and package to see estimate.";
     return;
   }
 
-  let [low, high] = packagePricing[pkg][size];
+  let base=basePrices[pkg][size];
 
-  const [cLow, cHigh] = conditionAdd[condition];
-  low += cLow;
-  high += cHigh;
+  base+=conditionAdjust[condition]||0;
 
-  // add-ons
-  document.querySelectorAll(".addon:checked").forEach((cb) => {
-    const key = cb.value;
-    if (!addonRanges[key]) return;
-    low += addonRanges[key][0];
-    high += addonRanges[key][1];
+  document.querySelectorAll(".addon:checked").forEach(cb=>{
+    base+=addonPrices[cb.value]||0;
   });
 
-  rangeEl.textContent = `${formatMoney(low)} – ${formatMoney(high)}`;
+  const low=Math.round(base*0.85);
+  const high=Math.round(base*1.20);
+
+  range.textContent=`${formatMoney(low)} – ${formatMoney(high)}`;
+
 }
 
-// Wire up live updates
-["vehicleSize", "vehicleCondition", "servicePackage"].forEach((id) => {
-  const el = document.getElementById(id);
-  if (el) el.addEventListener("change", calcEstimate);
+// Live updates
+
+["vehicleSize","vehicleCondition","servicePackage"].forEach(id=>{
+  const el=document.getElementById(id);
+  if(el) el.addEventListener("change",calcEstimate);
 });
 
-document.querySelectorAll(".addon").forEach((cb) => {
-  cb.addEventListener("change", calcEstimate);
+document.querySelectorAll(".addon").forEach(cb=>{
+  cb.addEventListener("change",calcEstimate);
 });
 
 // Quote form submit (Formspree)
