@@ -104,6 +104,7 @@
 
         <nav class="nav" id="primaryNav" aria-label="Primary">
           <ul class="nav-links">
+            <li><a href="#founder">Meet the Founder</a></li>
             <li><a href="#services">Packages</a></li>
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#launch">Launch Offer</a></li>
@@ -219,6 +220,123 @@
           </div>
         </div>
       </section>
+
+<!-- About the Founder -->
+<section id="founder" class="section">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title center">About the Founder</h2>
+      <p class="section-subtitle center">
+        Army veteran, former firefighter / paramedic, father, and founder of Veteran Detail Services.
+        Our mission is simple: provide professional vehicle care with a focus on quality, cleanliness, and trust.
+      </p>
+    </div>
+
+    <!-- Founder Intro -->
+    <div class="split founder-intro">
+      <div class="founder-image-wrap">
+  <div class="founder-image-grid">
+    <img
+      src="assets/images/founder.jpg"
+      alt="Jake D'Angelo with Bentley"
+      class="founder-image founder-image-main"
+      loading="lazy"
+    />
+    <img
+      src="assets/images/family.jpeg"
+      alt="Jake D'Angelo with his family"
+      class="founder-image founder-image-secondary"
+      loading="lazy"
+    />
+  </div>
+</div>
+
+      <div class="founder-copy">
+        <h3>Meet Jake D'Angelo</h3>
+        <p>
+          My name is <strong>Jake D'Angelo</strong>, founder of Veteran Detail Services and a proud resident of
+          Punta Gorda, Florida. I served on active duty in the United States Army from 2007 to 2014 as a
+          Forward Observer, including a deployments to the Middle East. I was medically retired following injuries 
+          sustained while deployed.
+        </p>
+        <p>
+          After the military, I continued serving my community as a firefighter and paramedic in Lee County.
+          Those experiences shaped the discipline, attention to detail, and service-first mindset that now
+          guide every part of this business.
+        </p>
+
+      </div>
+    </div>
+
+    <!-- Founder Story Blocks -->
+    <div class="founder-grid">
+      <article class="founder-card">
+        <img
+          src="assets/images/army.jpg"
+          alt="Jake D'Angelo during his Army service"
+          class="founder-card-image founder-card-image-army"
+          loading="lazy"
+        />
+        <div class="founder-card-body">
+          <div class="card-tag">MILITARY SERVICE</div>
+          <h3>Army Veteran</h3>
+          <p>
+            Serving in the Army taught me discipline, leadership, and precision. As a Sergeant leading a fire
+            support team, I learned that attention to detail, adaptability, and professionalism matter in every mission.
+          </p>
+        </div>
+      </article>
+
+      <article class="founder-card">
+        <img
+          src="assets/images/firefighter.jpg"
+          alt="Jake D'Angelo as a firefighter and paramedic"
+          class="founder-card-image founder-card-image-fire"
+          loading="lazy"
+        />
+        <div class="founder-card-body">
+          <div class="card-tag">PUBLIC SERVICE</div>
+          <h3>Former Firefighter / Paramedic</h3>
+          <p>
+            Working in emergency services reinforced the importance of sanitation, safety, and serving people
+            when they need help most. That experience still influences how I approach every vehicle we touch.
+          </p>
+        </div>
+      </article>
+
+      <article class="founder-card">
+        <img
+          src="assets/images/bentley.jpg"
+          alt="Jake D'Angelo and his son Bentley"
+          class="founder-card-image founder-card-image-why"
+          loading="lazy"
+        />
+        <div class="founder-card-body">
+          <div class="card-tag">OUR WHY</div>
+          <h3>Why This Business Exists</h3>
+          <p>Our son Bentley was born at 22 weeks and remains medically fragile. That changed how our family views cleanliness,
+            especially in the vehicle we depend on daily. Veteran Detail Services was built from that experience — to provide 
+            not only a better-looking vehicle, but a cleaner and healthier one.
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <!-- Mission Close -->
+    <div class="founder-mission">
+      <h3>Our Mission</h3>
+      <p>
+        Veteran Detail Services combines professional detailing with a health-conscious approach to vehicle care.
+        We want every customer to feel they received real value, exceptional service, and a vehicle they can take pride in.
+      </p>
+
+      <div class="founder-actions">
+        <a href="#services" class="btn-secondary dark">View Packages</a>
+        <a href="#contact" class="btn-primary">Get a Fast Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
 
       <!-- Services -->
       <section id="services" class="section">
@@ -650,7 +768,7 @@
                     Package
                     <select name="package" id="servicePackage" required>
                       <option value="" selected disabled>Select package</option>
-                      <option value="essential-bundle">Essential Clean Package (Starting at$120)</option>
+                      <option value="essential-bundle">Essential Clean Package (Starting at $120)</option>
                       <option value="essential-interior">Essential Interior Clean (Starting at $85)</option>
                       <option value="essential-exterior">Essential Exterior Wash (Starting at $65)</option>
                       <option value="tier2-bundle">Complete Restoration Package (Starting at $250)</option>
@@ -671,7 +789,7 @@
 
                   <label class="check">
                     <input type="checkbox" value="headlights" class="addon" />
-                    Headlight restoration (+150)
+                    Headlight restoration (+$150)
                   </label>
 
                   <label class="check">
@@ -732,13 +850,6 @@
 
               <div class="payments">
                 <div class="payments-title">Accepted Payments:</div>
-                 <ul class="payments-list">
-                  <li>Cash</li>
-                  <li>Venmo</li>
-                  <li>Cash App</li>
-                  <li>Apple Pay</li>
-                  <li>Credit/Debit (Stripe)</li>
-                 </ul>
                 <div class="payment-icons">
 
   <div class="pay-icon">
@@ -747,7 +858,7 @@
   </div>
 
   <div class="pay-icon">
-    <img src="assets/images/" alt="Venmo" class="pay-logo">
+    <img src="assets/images/venmo.svg" alt="Venmo" class="pay-logo">
     <span>Venmo</span>
   </div>
 
@@ -776,6 +887,7 @@
 <p class="secure-note">
 Secure payments accepted. All major payment methods supported.
 </p>
+</div>
 
               <div class="contact-social">
                 <a

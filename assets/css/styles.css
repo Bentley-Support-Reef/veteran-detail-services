@@ -276,6 +276,160 @@ section{
 }
 
 /* =========================
+   FOUNDER SECTION
+========================= */
+.founder-intro{
+  align-items: start;
+}
+
+.founder-image-wrap{
+  background: linear-gradient(135deg, rgba(12,35,64,0.05), rgba(61,180,231,0.10));
+  border: 1px solid rgba(12,35,64,0.10);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  padding: 12px;
+}
+
+.founder-image-grid{
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.founder-image{
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(12,35,64,0.12);
+}
+
+.founder-image-main{
+  object-position: center 25%;
+}
+
+.founder-image-secondary{
+  object-position: center 35%;
+}
+
+.founder-copy h3{
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  font-weight: 950;
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+}
+
+.founder-copy p{
+  color: var(--muted);
+  font-weight: 650;
+  margin-bottom: 1rem;
+}
+
+.founder-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.25rem;
+}
+
+.founder-card{
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+.founder-card .card-tag{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  min-height: 48px;
+  margin: 0 auto 0.35rem auto;
+  text-align: center;
+}
+
+.founder-card-image{
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.founder-card-image-army{
+  object-position: center 18%;
+}
+
+.founder-card-image-fire{
+  object-position: center 20%;
+}
+
+.founder-card-image-why{
+  object-position: center 30%;
+}
+
+.founder-card-body{
+  padding: 1.4rem 1.25rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.founder-card h3{
+  font-weight: 950;
+  color: var(--navy);
+  margin: 0;
+}
+
+.founder-card p{
+  color: var(--muted);
+  font-weight: 650;
+  margin: 0;
+}
+
+.founder-card h3, 
+.founder-card p{
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.founder-mission{
+  margin-top: 2.25rem;
+  background: linear-gradient(135deg, rgba(12,35,64,0.05), rgba(61,180,231,0.10));
+  border: 1px solid rgba(12,35,64,0.10);
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.founder-mission h3{
+  font-weight: 950;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.founder-mission p{
+  color: var(--muted);
+  font-weight: 650;
+  margin: 0;
+}
+
+.founder-actions{
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
+/* =========================
    SEO
 ========================= */
 .areas-seo{
@@ -1084,14 +1238,6 @@ section{
   transform: scale(1.25);
 }
 
-/* Brand colors */
-.pay-icon.cash .pay-svg{ stroke: #0c2340; }
-.pay-icon.venmo .pay-svg{ stroke: #3D95CE; }
-.pay-icon.cashapp .pay-svg{ stroke: #00C244; }
-.pay-icon.zelle .pay-svg{ stroke: #6C1EDC; }
-.pay-icon.applepay .pay-svg{ stroke: #000000; }
-.pay-icon.card .pay-svg{ stroke: #144a75; }
-
 /* Secure note */
 .secure-note{
   margin-top: 0.75rem;
@@ -1207,10 +1353,35 @@ section{
   .contact-grid{ grid-template-columns: 1fr; }
   .form-grid{ grid-template-columns: 1fr; }
   .footer-inner{ flex-direction: column; text-align: center; }
+
+  .founder-image-grid{
+  grid-template-columns: 1fr;}
+  .founder-image{
+  height: 320px;}
+  .founder-grid{
+  grid-template-columns: 1fr;
+}
 }
 
 @media (max-width: 600px){
   .topbar-inner{ flex-direction: column; align-items: flex-start; }
   .hero{ min-height: calc(88vh - 90px); }
   .areas{ grid-template-columns: 1fr; }
+
+  .founder-card-image{
+  height: 240px;
+}
+
+.founder-card-image-army{
+  object-position: center 12%;
+}
+
+.founder-card-image-fire{
+  object-position: center 16%;
+}
+
+.founder-card-image-why{
+  object-position: center 24%;
+}
+  .founder-mission{ padding: 1.25rem; }
 }
