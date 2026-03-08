@@ -1043,6 +1043,32 @@ section{
   font-size: 0.98rem;
 }
 
+.form-success-card{
+  background: #fff;
+  border: 1px solid rgba(12,35,64,0.10);
+  border-radius: 18px;
+  padding: 2rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  scroll-margin-top: 110px;
+}
+
+.form-success-card h3{
+  color: var(--navy);
+  font-weight: 950;
+  margin-bottom: 0.75rem;
+}
+
+.form-success-card p{
+  color: var(--muted);
+  font-weight: 650;
+  margin: 0.75rem 0;
+}
+
+.form-success-card a{
+  color: var(--navy);
+}
+
 .recommend-label{
   color: var(--navy);
   font-weight: 900;
@@ -1533,4 +1559,56 @@ grid-template-columns:1fr;
   object-position: center 24%;
 }
   .founder-mission{ padding: 1.25rem; }
+}
+
+.mobile-cta-bar{
+  display: none;
+}
+
+@media (max-width: 768px){
+  .mobile-cta-bar{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    padding: 0.75rem;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(12,35,64,0.12);
+    box-shadow: 0 -10px 24px rgba(0,0,0,0.08);
+  }
+
+  .mobile-cta-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.85rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(12,35,64,0.14);
+    background: #fff;
+    color: var(--navy);
+    font-weight: 900;
+    font-size: 0.95rem;
+    box-shadow: 0 6px 16px rgba(12,35,64,0.06);
+  }
+
+  .mobile-cta-btn.primary{
+    background: var(--navy);
+    color: #fff;
+    border-color: var(--navy);
+  }
+
+  .mobile-cta-btn.accent{
+    background: rgba(61,180,231,0.12);
+    border-color: rgba(61,180,231,0.32);
+  }
+
+  body{
+    padding-bottom: 88px;
+  }
 }

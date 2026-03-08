@@ -200,12 +200,21 @@ if (form) {
         headers: { "Accept": "application/json" },
       });
 
-      if (res.ok) {
-        setStatus("success", "Thanks! Your request was sent. We’ll reach out shortly.");
-        form.reset();
-        calcEstimate();
-        return;
-      }
+     if (res.ok) {
+  form.reset();
+  calcEstimate();
+
+  const quoteContainer = document.getElementById("quoteContainer");
+  const quoteSuccess = document.getElementById("quoteSuccess");
+
+  if (quoteContainer) quoteContainer.style.display = "none";
+  if (quoteSuccess) {
+    quoteSuccess.style.display = "block";
+    quoteSuccess.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  
+  return;
+}
 
       let data = null;
       try { data = await res.json(); } catch (_) {}
