@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Veteran Detail Services | Command Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #0c2340;
+        --navy-2: #144a75;
+        --sky: #3db4e7;
+        --text: #121826;
+        --muted: #425466;
+        --bg: #f6f8fb;
+        --card: #ffffff;
+        --border: rgba(12, 35, 64, 0.1);
+        --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.06);
+        --shadow-md: 0 18px 40px rgba(0, 0, 0, 0.08);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: linear-gradient(180deg, #f8fafc 0%, #eef3f8 100%);
+        color: var(--text);
+      }
+
+      a { color: inherit; text-decoration: none; }
+
+      .page {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 2rem 1rem 3rem;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 92px 1fr;
+        gap: 1rem;
+        align-items: center;
+        background: linear-gradient(135deg, rgba(12,35,64,0.08), rgba(61,180,231,0.12));
+        border: 1px solid rgba(12,35,64,0.08);
+        border-radius: 24px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow-sm);
+        margin-bottom: 1.5rem;
+      }
+
+      .hero img {
+        width: 92px;
+        height: auto;
+      }
+
+      .eyebrow {
+        margin: 0 0 0.35rem;
+        color: var(--navy);
+        font-size: 0.8rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      h1 {
+        margin: 0;
+        color: var(--navy);
+        font-size: clamp(1.9rem, 4vw, 2.7rem);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+      }
+
+      .hero p {
+        margin: 0.55rem 0 0;
+        max-width: 760px;
+        color: var(--muted);
+        font-weight: 650;
+      }
+
+      .quick-grid,
+      .tool-grid,
+      .ops-grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .quick-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        margin-bottom: 1.5rem;
+      }
+
+      .tool-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-bottom: 1.5rem;
+      }
+
+      .ops-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .card,
+      .action-card,
+      .status-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .action-card {
+        padding: 1.15rem;
+        transition: transform 0.18s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+
+      .action-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-color: rgba(61,180,231,0.35);
+      }
+
+      .action-card .label {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.7rem;
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(61,180,231,0.12);
+        color: var(--navy);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.03em;
+      }
+
+      .action-card h2 {
+        margin: 0 0 0.45rem;
+        color: var(--navy);
+        font-size: 1.1rem;
+        font-weight: 900;
+      }
+
+      .action-card p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 650;
+        line-height: 1.55;
+      }
+
+      .action-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1rem;
+        padding: 0.82rem 1rem;
+        border-radius: 999px;
+        background: var(--navy);
+        color: #fff;
+        font-weight: 900;
+      }
+
+      .action-link.secondary {
+        background: #fff;
+        color: var(--navy);
+        border: 1px solid rgba(12,35,64,0.16);
+      }
+
+      .section-title {
+        margin: 0 0 0.85rem;
+        color: var(--navy);
+        font-size: 1.15rem;
+        font-weight: 900;
+      }
+
+      .status-card {
+        padding: 1.2rem;
+      }
+
+      .status-card ul {
+        margin: 0;
+        padding-left: 1.1rem;
+        color: var(--muted);
+        font-weight: 650;
+      }
+
+      .status-card li + li { margin-top: 0.45rem; }
+
+      .small-note {
+        margin-top: 0.8rem;
+        color: var(--muted);
+        font-size: 0.92rem;
+        font-weight: 650;
+      }
+
+      .mini-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .mini-actions a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.72rem 0.95rem;
+        border-radius: 999px;
+        border: 1px solid rgba(12,35,64,0.14);
+        background: rgba(246,248,251,0.88);
+        color: var(--navy);
+        font-weight: 850;
+      }
+
+      @media (max-width: 980px) {
+        .quick-grid,
+        .tool-grid,
+        .ops-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          text-align: left;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <img src="assets/images/logo-header.png" alt="Veteran Detail Services" />
+        <div>
+          <p class="eyebrow">Owner Dashboard</p>
+          <h1>Veteran Detail Services Command Center</h1>
+          <p>
+            Quick access to lead intake, estimate creation, invoicing, receipts, and day-to-day follow-up.
+            Bookmark this page and add it to your phone home screen for field use.
+          </p>
+        </div>
+      </section>
+
+      <section class="quick-grid">
+        <a class="action-card" href="/" target="_blank" rel="noopener">
+          <div class="label">Website</div>
+          <h2>Open Live Site</h2>
+          <p>Check your homepage, quote form, and live customer-facing experience.</p>
+          <span class="action-link secondary">Open Website</span>
+        </a>
+
+        <a class="action-card" href="/estimate/" target="_blank" rel="noopener">
+          <div class="label">Estimate</div>
+          <h2>Create Estimate</h2>
+          <p>Build a true quote after speaking with the lead and confirming condition.</p>
+          <span class="action-link">Open Estimate</span>
+        </a>
+
+        <a class="action-card" href="/invoice/" target="_blank" rel="noopener">
+          <div class="label">Invoice</div>
+          <h2>Create Invoice</h2>
+          <p>Turn the approved job into a final invoice and collect payment at completion.</p>
+          <span class="action-link">Open Invoice</span>
+        </a>
+
+        <a class="action-card" href="/receipt/" target="_blank" rel="noopener">
+          <div class="label">Receipt</div>
+          <h2>Create Receipt</h2>
+          <p>Send the finished receipt, review request, and QR code after payment.</p>
+          <span class="action-link">Open Receipt</span>
+        </a>
+      </section>
+
+      <section class="tool-grid">
+        <div class="status-card">
+          <h2 class="section-title">Lead Notifications</h2>
+          <ul>
+            <li>Keep Gmail notifications enabled for your business email.</li>
+            <li>Use Formspree email notifications as the primary alert path.</li>
+            <li>Add a Discord or Slack integration later for cleaner phone alerts.</li>
+          </ul>
+          <div class="mini-actions">
+            <a href="https://mail.google.com" target="_blank" rel="noopener">Open Gmail</a>
+            <a href="https://formspree.io" target="_blank" rel="noopener">Open Formspree</a>
+          </div>
+        </div>
+
+        <div class="status-card">
+          <h2 class="section-title">Lead Intake Workflow</h2>
+          <ul>
+            <li>Customer submits quote request on website.</li>
+            <li>You get notified and review vehicle size, condition, and goals.</li>
+            <li>You call or text the lead, confirm scope, then build an estimate.</li>
+          </ul>
+        </div>
+
+        <div class="status-card">
+          <h2 class="section-title">After Approval</h2>
+          <ul>
+            <li>Use the invoice builder at job completion.</li>
+            <li>Use the receipt builder after payment is collected.</li>
+            <li>Ask for the review using the receipt QR code while the result is fresh.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="ops-grid">
+        <div class="status-card">
+          <h2 class="section-title">Recommended Bookmarks</h2>
+          <ul>
+            <li>/command-center.html</li>
+            <li>/estimate/</li>
+            <li>/invoice/</li>
+            <li>/receipt/</li>
+          </ul>
+          <p class="small-note">On iPhone: open this page in Safari, tap Share, then choose Add to Home Screen.</p>
+        </div>
+
+        <div class="status-card">
+          <h2 class="section-title">Next Up</h2>
+          <ul>
+            <li>Wire in automatic confirmation emails for new quote submissions.</li>
+            <li>Optionally add Discord alerts for instant lead notifications.</li>
+            <li>Later: convert approved estimates into invoices automatically.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
