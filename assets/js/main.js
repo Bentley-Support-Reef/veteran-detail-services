@@ -232,3 +232,85 @@ if (form) {
 
 // run once on load
 calcEstimate();
+
+const heroSlides = document.querySelectorAll(".hero-slide");
+const heroDots = document.querySelectorAll(".hero-dot");
+const prevHeroBtn = document.querySelector(".hero-slider-btn.prev");
+const nextHeroBtn = document.querySelector(".hero-slider-btn.next");
+const heroSlider = document.querySelector(".hero-slider");
+
+let currentHeroSlide = 0;
+let heroSliderInterval;
+
+function showHeroSlide(index) {
+  if (!heroSlides.length) return;
+
+  heroSlides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === index);
+  });
+
+  heroDots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === index);
+  });
+
+  currentHeroSlide = index;
+}
+
+function nextHeroSlide() {
+  const nextIndex = (currentHeroSlide + 1) % heroSlides.length;
+  showHeroSlide(nextIndex);
+}
+
+function prevHeroSlide() {
+  const prevIndex = (currentHeroSlide - 1 + heroSlides.length) % heroSlides.length;
+  showHeroSlide(prevIndex);
+}
+
+function startHeroSlider() {
+  if (!heroSlides.length) return;
+  clearInterval(heroSliderInterval);
+  heroSliderInterval = setInterval(nextHeroSlide, 4500);
+}
+
+function stopHeroSlider() {
+  clearInterval(heroSliderInterval);
+}
+
+if (heroSlides.length) {
+  if (nextHeroBtn) {
+    nextHeroBtn.addEventListener("click", () => {
+      nextHeroSlide();
+      startHeroSlider();
+    });
+  }
+
+  if (prevHeroBtn) {
+    prevHeroBtn.addEventListener("click", () => {
+      prevHeroSlide();
+      startHeroSlider();
+    });
+  }
+
+  heroDots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      showHeroSlide(index);
+      startHeroSlider();
+    });
+  });
+
+  if (heroSlider) {
+    heroSlider.addEventListener("mouseenter", stopHeroSlider);
+    heroSlider.addEventListener("mouseleave", startHeroSlider);
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stopHeroSlider();
+    } else {
+      startHeroSlider();
+    }
+  });
+
+  showHeroSlide(0);
+  startHeroSlider();
+}
