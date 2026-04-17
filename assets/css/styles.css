@@ -841,31 +841,33 @@ section{
 }
 
 /* Center Premium (Tier 3) section card */
-#services .cards:last-of-type{
+#services .cards:first-of-type{
   display: flex;
   justify-content: center;
 }
 
-#services .cards:last-of-type .card{
+#services .cards:first-of-type .card{
   width: 100%;
-  max-width: 560px;
+  max-width: 760px;
 }
 
 @media (max-width: 768px) {
-  .addon-cards {
-    display: grid;
-    grid-template-columns: 1fr;
+  #services .addon-cards{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
     gap: 1rem;
-    overflow-x: visible;
+    overflow-x: visible !important;
   }
 
-  .addon-cards .card {
-    width: 100%;
-    max-width: none;
-    min-width: 0;
+  #services .addon-cards .card{
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
   }
 
-  body {
+  html,
+  body{
     overflow-x: hidden;
   }
 }
