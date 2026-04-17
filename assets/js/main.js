@@ -1,316 +1,180 @@
-// Mobile nav
-const toggle = document.querySelector(".nav-toggle");
-const nav = document.querySelector(".nav");
+// Shared site behavior for Veteran Detail Services
+// Handles:
+// - mobile navigation toggle
+// - smooth scrolling for same-page anchors only
+// - FAQ accordion
+// - homepage hero slider
 
-if (toggle && nav) {
-  toggle.addEventListener("click", () => {
-    const isOpen = nav.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", String(isOpen));
+(() => {
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.nav');
+
+  function closeMobileNav() {
+    if (!nav || !toggle) return;
+    nav.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  function openMobileNav() {
+    if (!nav || !toggle) return;
+    nav.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+  }
+
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.contains('is-open');
+      if (isOpen) {
+        closeMobileNav();
+      } else {
+        openMobileNav();
+      }
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const href = link.getAttribute('href');
+      if (!href || href === '#') return;
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      event.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      closeMobileNav();
+    });
   });
-}
 
-// Smooth scroll + close mobile nav
-document.querySelectorAll('a[href^="#"]').forEach((a) => {
-  a.addEventListener("click", (e) => {
-    const id = a.getAttribute("href");
-    if (!id || id === "#") return;
+  document.addEventListener('click', (event) => {
+    if (!nav || !toggle) return;
+    if (!nav.classList.contains('is-open')) return;
 
-    const el = document.querySelector(id);
-    if (!el) return;
+    const clickedInsideNav = nav.contains(event.target);
+    const clickedToggle = toggle.contains(event.target);
 
-    e.preventDefault();
-    el.scrollIntoView({ behavior: "smooth" });
-
-    if (nav?.classList.contains("is-open")) {
-      nav.classList.remove("is-open");
-      toggle?.setAttribute("aria-expanded", "false");
+    if (!clickedInsideNav && !clickedToggle) {
+      closeMobileNav();
     }
   });
-});
 
-// FAQ accordion
-const questions = document.querySelectorAll(".faq-q");
-questions.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const expanded = btn.getAttribute("aria-expanded") === "true";
-    const answer = btn.nextElementSibling;
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMobileNav();
+    }
+  });
 
-    questions.forEach((b) => {
-      if (b !== btn) {
-        b.setAttribute("aria-expanded", "false");
-        const a = b.nextElementSibling;
-        if (a) a.hidden = true;
-        const icon = b.querySelector(".faq-icon");
-        if (icon) icon.textContent = "+";
+  const faqButtons = document.querySelectorAll('.faq-q');
+
+  faqButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      const answer = button.nextElementSibling;
+      const icon = button.querySelector('.faq-icon');
+
+      faqButtons.forEach((otherButton) => {
+        if (otherButton === button) return;
+
+        otherButton.setAttribute('aria-expanded', 'false');
+        const otherAnswer = otherButton.nextElementSibling;
+        const otherIcon = otherButton.querySelector('.faq-icon');
+
+        if (otherAnswer) otherAnswer.hidden = true;
+        if (otherIcon) otherIcon.textContent = '+';
+      });
+
+      button.setAttribute('aria-expanded', String(!isExpanded));
+
+      if (answer) {
+        answer.hidden = isExpanded;
+      }
+
+      if (icon) {
+        icon.textContent = isExpanded ? '+' : '–';
+      }
+    });
+  });
+
+  const heroSlides = Array.from(document.querySelectorAll('.hero-slide'));
+  const heroDots = Array.from(document.querySelectorAll('.hero-dot'));
+  const prevHeroButton = document.querySelector('.hero-slider-btn.prev');
+  const nextHeroButton = document.querySelector('.hero-slider-btn.next');
+  const heroSlider = document.querySelector('.hero-slider');
+
+  if (heroSlides.length > 0) {
+    let currentHeroSlide = 0;
+    let heroSliderInterval = null;
+    const heroSlideCount = heroSlides.length;
+
+    function showHeroSlide(index) {
+      heroSlides.forEach((slide, slideIndex) => {
+        slide.classList.toggle('active', slideIndex === index);
+      });
+
+      heroDots.forEach((dot, dotIndex) => {
+        dot.classList.toggle('active', dotIndex === index);
+      });
+
+      currentHeroSlide = index;
+    }
+
+    function nextHeroSlide() {
+      const nextIndex = (currentHeroSlide + 1) % heroSlideCount;
+      showHeroSlide(nextIndex);
+    }
+
+    function prevHeroSlide() {
+      const prevIndex = (currentHeroSlide - 1 + heroSlideCount) % heroSlideCount;
+      showHeroSlide(prevIndex);
+    }
+
+    function startHeroSlider() {
+      stopHeroSlider();
+      heroSliderInterval = window.setInterval(nextHeroSlide, 4500);
+    }
+
+    function stopHeroSlider() {
+      if (heroSliderInterval) {
+        window.clearInterval(heroSliderInterval);
+        heroSliderInterval = null;
+      }
+    }
+
+    if (nextHeroButton) {
+      nextHeroButton.addEventListener('click', () => {
+        nextHeroSlide();
+        startHeroSlider();
+      });
+    }
+
+    if (prevHeroButton) {
+      prevHeroButton.addEventListener('click', () => {
+        prevHeroSlide();
+        startHeroSlider();
+      });
+    }
+
+    heroDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showHeroSlide(index);
+        startHeroSlider();
+      });
+    });
+
+    if (heroSlider) {
+      heroSlider.addEventListener('mouseenter', stopHeroSlider);
+      heroSlider.addEventListener('mouseleave', startHeroSlider);
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopHeroSlider();
+      } else {
+        startHeroSlider();
       }
     });
 
-    btn.setAttribute("aria-expanded", String(!expanded));
-    if (answer) answer.hidden = expanded;
-
-    const icon = btn.querySelector(".faq-icon");
-    if (icon) icon.textContent = expanded ? "+" : "–";
-  });
-});
-
-// ---------------------------
-// Instant estimate calculator
-// ---------------------------
-
-const basePrices = {
-
-  "essential-bundle": {
-    sedan:100,
-    suv:115,
-    large:130
-  },
-
-  "essential-interior": {
-    sedan:75,
-    suv:85,
-    large:95
-  },
-
-  "essential-exterior": {
-    sedan:55,
-    suv:65,
-    large:75
-  },
-
-  "tier2-bundle": {
-    sedan:200,
-    suv:220,
-    large:240
-  },
-
-  "tier2-interior": {
-    sedan:150,
-    suv:165,
-    large:180
-  },
-
-  "tier2-exterior": {
-    sedan:95,
-    suv:105,
-    large:115
-  },
-
-  "tier3": {
-    sedan:349,
-    suv:379,
-    large:409
+    showHeroSlide(0);
+    startHeroSlider();
   }
-
-};
-
-const conditionAdjust = {
-  light:0,
-  moderate:25,
-  heavy:60
-};
-
-const addonPrices = {
-  clay:50,
-  headlights:150,
-  engine:50,
-  petHairLight:40,
-  petHairHeavy:65
-};
-
-function formatMoney(n){
-  return "$"+n;
-}
-
-function calcEstimate(){
-
-  const size=document.getElementById("vehicleSize")?.value;
-  const condition=document.getElementById("vehicleCondition")?.value;
-  const pkg=document.getElementById("servicePackage")?.value;
-
-  const range=document.getElementById("estimateRange");
-
-  if(!size||!condition||!pkg){
-    range.textContent="Select size, condition, and package to see estimate.";
-    return;
-  }
-
-  let base=basePrices[pkg][size];
-
-  base+=conditionAdjust[condition]||0;
-
-  document.querySelectorAll(".addon:checked").forEach(cb=>{
-    base+=addonPrices[cb.value]||0;
-  });
-
-  const low=Math.round(base*0.85);
-  const high=Math.round(base*1.20);
-
-  range.textContent=`${formatMoney(low)} – ${formatMoney(high)}`;
-
-}
-
-// Live updates
-
-["vehicleSize","vehicleCondition","servicePackage"].forEach(id=>{
-  const el=document.getElementById(id);
-  if(el) el.addEventListener("change",calcEstimate);
-});
-
-document.querySelectorAll(".addon").forEach(cb=>{
-  cb.addEventListener("change",calcEstimate);
-});
-
-// Quote form submit (Formspree)
-const form = document.getElementById("quoteForm");
-const statusEl = document.getElementById("formStatus");
-
-function setStatus(type, msg) {
-  if (!statusEl) return;
-  statusEl.className = `form-status ${type}`;
-  statusEl.textContent = msg;
-  statusEl.style.display = "block";
-}
-
-if (form) {
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    // Make sure estimate is up to date before sending
-    calcEstimate();
-
-    // Clear previous status
-    if (statusEl) {
-      statusEl.className = "form-status";
-      statusEl.textContent = "";
-      statusEl.style.display = "none";
-    }
-
-    const endpoint = form.getAttribute("action");
-    if (!endpoint) {
-      setStatus("error", "Form endpoint missing. Please try again later or call (941) 236-1478.");
-      return;
-    }
-
-    const formData = new FormData(form);
-
-    try {
-      const res = await fetch(endpoint, {
-        method: "POST",
-        body: formData,
-        headers: { "Accept": "application/json" },
-      });
-
-     if (res.ok) {
-  form.reset();
-  calcEstimate();
-
-  const quoteContainer = document.getElementById("quoteContainer");
-  const quoteSuccess = document.getElementById("quoteSuccess");
-
-  if (quoteContainer) quoteContainer.style.display = "none";
-  if (quoteSuccess) {
-    quoteSuccess.style.display = "block";
-    quoteSuccess.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-  
-  return;
-}
-
-      let data = null;
-      try { data = await res.json(); } catch (_) {}
-
-      const msg =
-        data?.errors?.map((err) => err.message).join(", ") ||
-        "Something went wrong sending your request. Please call or try again.";
-
-      setStatus("error", msg);
-    } catch (err) {
-      setStatus("error", "Network error. Please try again or call (941) 236-1478.");
-    }
-  });
-}
-
-// run once on load
-calcEstimate();
-
-const heroSlides = document.querySelectorAll(".hero-slide");
-const heroDots = document.querySelectorAll(".hero-dot");
-const prevHeroBtn = document.querySelector(".hero-slider-btn.prev");
-const nextHeroBtn = document.querySelector(".hero-slider-btn.next");
-const heroSlider = document.querySelector(".hero-slider");
-
-let currentHeroSlide = 0;
-let heroSliderInterval;
-
-function showHeroSlide(index) {
-  if (!heroSlides.length) return;
-
-  heroSlides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === index);
-  });
-
-  heroDots.forEach((dot, i) => {
-    dot.classList.toggle("active", i === index);
-  });
-
-  currentHeroSlide = index;
-}
-
-function nextHeroSlide() {
-  const nextIndex = (currentHeroSlide + 1) % heroSlides.length;
-  showHeroSlide(nextIndex);
-}
-
-function prevHeroSlide() {
-  const prevIndex = (currentHeroSlide - 1 + heroSlides.length) % heroSlides.length;
-  showHeroSlide(prevIndex);
-}
-
-function startHeroSlider() {
-  if (!heroSlides.length) return;
-  clearInterval(heroSliderInterval);
-  heroSliderInterval = setInterval(nextHeroSlide, 4500);
-}
-
-function stopHeroSlider() {
-  clearInterval(heroSliderInterval);
-}
-
-if (heroSlides.length) {
-  if (nextHeroBtn) {
-    nextHeroBtn.addEventListener("click", () => {
-      nextHeroSlide();
-      startHeroSlider();
-    });
-  }
-
-  if (prevHeroBtn) {
-    prevHeroBtn.addEventListener("click", () => {
-      prevHeroSlide();
-      startHeroSlider();
-    });
-  }
-
-  heroDots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-      showHeroSlide(index);
-      startHeroSlider();
-    });
-  });
-
-  if (heroSlider) {
-    heroSlider.addEventListener("mouseenter", stopHeroSlider);
-    heroSlider.addEventListener("mouseleave", startHeroSlider);
-  }
-
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-      stopHeroSlider();
-    } else {
-      startHeroSlider();
-    }
-  });
-
-  showHeroSlide(0);
-  startHeroSlider();
-}
+})();
