@@ -851,6 +851,25 @@ section{
   max-width: 560px;
 }
 
+@media (max-width: 768px) {
+  .addon-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    overflow-x: visible;
+  }
+
+  .addon-cards .card {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+
 /* =========================
    GALLERY
 ========================= */
