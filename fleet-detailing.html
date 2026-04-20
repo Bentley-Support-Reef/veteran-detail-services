@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Fleet Vehicle Detailing in Southwest Florida | Veteran Detail Services</title>
+    <meta
+      name="description"
+      content="Veteran-owned mobile fleet detailing in Southwest Florida for dealerships, service vans, admin vehicles, work trucks, and small business fleets. Custom commercial quotes with on-site mobile service."
+    />
+    <meta
+      name="keywords"
+      content="fleet vehicle detailing Southwest Florida, mobile fleet detailing SWFL, dealership vehicle detailing, service van detailing, work truck detailing, commercial vehicle detailing, admin fleet detailing"
+    />
+
+    <meta property="og:url" content="https://veterandetailservices.com/fleet-detailing.html" />
+    <meta
+      property="og:title"
+      content="Mobile Fleet Vehicle Detailing in Southwest Florida | Veteran Detail Services"
+    />
+    <meta
+      property="og:description"
+      content="Professional mobile detailing for dealerships, service vans, admin vehicles, work trucks, and small business fleets across Southwest Florida."
+    />
+    <meta
+      property="og:image"
+      content="https://veterandetailservices.com/assets/images/fleet/fleet-hero.jpg"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Veteran Detail Services" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <link rel="canonical" href="https://veterandetailservices.com/fleet-detailing.html" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .county-hero {
+        position: relative;
+        min-height: 68vh;
+        display: flex;
+        align-items: center;
+        background:
+          linear-gradient(to right, rgba(12, 35, 64, 0.86), rgba(12, 35, 64, 0.54)),
+          linear-gradient(to top, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.12)),
+          url("assets/images/fleet/fleet-hero-collage.jpg") center 40% / cover no-repeat;
+        color: #fff;
+      }
+
+      .county-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 760px;
+        padding: 7rem 0 5rem;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .county-hero h1 {
+        font-size: clamp(2.3rem, 5vw, 4.4rem);
+        line-height: 1.02;
+        margin-bottom: 1rem;
+        color: #fff;
+      }
+
+      .county-hero p {
+        font-size: clamp(1.05rem, 1.9vw, 1.25rem);
+        line-height: 1.65;
+        color: rgba(255, 255, 255, 0.96);
+        margin-bottom: 1.5rem;
+      }
+
+      .county-hero-buttons {
+        display: flex;
+        gap: 0.9rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .county-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 2rem;
+        align-items: start;
+      }
+
+      .county-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: var(--shadow-sm);
+        padding: 1.5rem;
+      }
+
+      .county-card h3 {
+        color: var(--navy);
+        font-weight: 950;
+        margin-bottom: 0.6rem;
+      }
+
+      .county-card p {
+        color: var(--muted);
+        font-weight: 650;
+      }
+
+      .county-points {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .county-point {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        box-shadow: var(--shadow-sm);
+        padding: 1rem;
+      }
+
+      .county-point h3 {
+        color: var(--navy);
+        font-weight: 950;
+        margin-bottom: 0.35rem;
+      }
+
+      .county-point p {
+        color: var(--muted);
+        font-weight: 650;
+      }
+
+      .county-results {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+
+      .county-result {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .county-result-image {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+      }
+
+      .county-result-body {
+        padding: 1rem 1.1rem 1.15rem;
+      }
+
+      .county-result-body h3 {
+        color: var(--navy);
+        font-weight: 950;
+        margin-bottom: 0.35rem;
+      }
+
+      .county-result-body p {
+        color: var(--muted);
+        font-weight: 650;
+      }
+
+      .county-map {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .county-map img {
+        width: 100%;
+        height: auto;
+        border-radius: 22px;
+        border: 1px solid rgba(12, 35, 64, 0.12);
+        box-shadow: var(--shadow-md);
+      }
+
+      .county-areas-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.9rem;
+        margin-top: 1.5rem;
+      }
+
+      .county-area-pill {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.95rem 1rem;
+        border-radius: 16px;
+        background: #fff;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+        font-weight: 900;
+        color: var(--navy);
+      }
+
+      .county-review-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+      }
+
+      .county-review {
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+      }
+
+      .county-review-name {
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 0.25rem;
+      }
+
+      .county-review-source {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.65);
+        margin-bottom: 0.7rem;
+      }
+
+      .county-review-stars {
+        font-size: 1.05rem;
+        letter-spacing: 0.08em;
+        color: #fbbc05;
+        margin-bottom: 0.75rem;
+      }
+
+      .county-review p {
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 600;
+      }
+
+      @media (max-width: 1000px) {
+        .county-grid,
+        .county-review-grid,
+        .county-areas-list {
+          grid-template-columns: 1fr;
+        }
+
+        .county-results {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .county-hero {
+          min-height: 62vh;
+          background:
+            linear-gradient(to top, rgba(12, 35, 64, 0.92), rgba(12, 35, 64, 0.62)),
+            linear-gradient(to right, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.10)),
+            url("assets/images/fleet/fleet-hero-collage.jpg") center 38% / cover no-repeat;
+        }
+
+        .county-hero-content {
+          text-align: center;
+          padding: 6.5rem 0 4.5rem;
+        }
+
+        .county-hero-buttons {
+          justify-content: center;
+        }
+
+        .county-result-image {
+          height: 240px;
+        }
+      }
+    </style>
+  </head>
+
+  <body id="top">
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <a class="topbar-phone" href="tel:+19412361478" aria-label="Call Veteran Detail Services">
+          <span class="dot"></span> Call: (941) 236-1478
+        </a>
+
+        <div class="topbar-social" aria-label="Social links">
+          <a href="mailto:veterandetailservices.swfl@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" class="social-icon" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"
+              />
+            </svg>
+          </a>
+
+          <a
+            href="https://www.instagram.com/veterandetailservices.swfl/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Instagram"
+          >
+            <svg viewBox="0 0 24 24" class="social-icon" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"
+              />
+            </svg>
+          </a>
+
+          <a
+            href="https://www.facebook.com/veterandetailservices"
+            target="_blank"
+            rel="noopener"
+            aria-label="Facebook"
+          >
+            <svg viewBox="0 0 24 24" class="social-icon" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M13 22v-8h3l1-4h-4V8c0-1.16.84-2 2-2h2V2h-3c-3.31 0-5 2.69-5 5v3H6v4h3v8h4z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <header class="navbar">
+      <div class="container nav-container">
+        <a class="logo-wrapper" href="index.html#top" aria-label="Go to home">
+          <img src="assets/images/vds-logo-header.png" alt="Veteran Detail Services" class="logo" />
+        </a>
+
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primaryNav">
+          <span class="sr-only">Open menu</span>
+          ☰
+        </button>
+
+        <nav class="nav" id="primaryNav" aria-label="Primary">
+          <ul class="nav-links">
+            <li><a href="founder.html">Meet the Founder</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="index.html#areas">Service Area</a></li>
+            <li><a href="index.html#reviews">Reviews</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="contact.html">Quote</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-cta">
+          <a href="contact.html" class="btn-primary">Request Quote</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="county-hero">
+        <div class="container">
+          <div class="county-hero-content">
+            <div class="hero-badge">Commercial Fleet • Mobile Service • Veteran-Owned</div>
+            <h1>Mobile Fleet Vehicle Detailing in Southwest Florida</h1>
+            <p>
+              Professional mobile detailing for dealerships, service vans, admin vehicles, work trucks,
+              and small business fleets across Southwest Florida. Built for businesses that need cleaner vehicles,
+              dependable communication, and repeatable service without the hassle of shop drop-offs.
+            </p>
+
+            <div class="county-hero-buttons">
+              <a href="contact.html" class="btn-primary large">Request Fleet Quote</a>
+              <a href="gallery.html" class="btn-secondary large">View Gallery</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container">
+          <div class="section-header center">
+            <h2 class="section-title center">Built for Businesses That Need Reliable Fleet Vehicle Care</h2>
+            <p class="section-subtitle center">
+              Fleet vehicles represent your company every day. Whether you manage dealership inventory,
+              service vans, admin vehicles, work trucks, or a small commercial fleet, we provide mobile detailing
+              designed to improve presentation, maintain cleaner interiors, and support a more professional image
+              across your vehicles.
+            </p>
+          </div>
+
+          <div class="county-grid">
+            <div class="county-card">
+              <h3>What this page is built for</h3>
+              <p>
+                This fleet page is designed for commercial clients who need straightforward service,
+                dependable scheduling, and practical vehicle presentation. From dealerships and admin vehicles
+                to service vans and recurring small business fleets, our approach is built around direct communication,
+                owner-operated quality, and custom quoting based on your actual scope.
+              </p>
+            </div>
+
+            <div class="county-points">
+              <div class="county-point">
+                <h3>Mobile Convenience</h3>
+                <p>We come to your lot, office, dealership, or job site so your vehicles do not need to leave service.</p>
+              </div>
+
+              <div class="county-point">
+                <h3>Commercial-Focused Service</h3>
+                <p>Built for service vans, admin vehicles, work trucks, dealership units, and fleet vehicles that need practical upkeep.</p>
+              </div>
+
+              <div class="county-point">
+                <h3>Custom Fleet Quotes</h3>
+                <p>Commercial pricing is quoted personally based on vehicle count, condition, scope of work, and service frequency.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="fleet-services">
+        <div class="container">
+          <div class="section-header center">
+            <h2 class="section-title center">Commercial Fleet Detailing Service</h2>
+            <p class="section-subtitle center">
+              Fleet jobs are quoted around your actual vehicles and operating needs, but most commercial work centers around one thing:
+              cleaner, more presentable vehicles with dependable mobile service and straightforward communication.
+            </p>
+          </div>
+
+          <div class="cards" style="display: flex; justify-content: center;">
+            <article class="card" style="max-width: 760px; width: 100%;">
+              <div class="card-top">
+                <h3>Commercial Fleet Detailing</h3>
+              </div>
+
+              <p>
+                Interior and exterior cleanup for dealerships, service vans, admin vehicles, work trucks,
+                and small business fleets. Designed for companies that want cleaner vehicles, better road presentation,
+                and a dependable mobile service partner.
+              </p>
+
+              <ul class="card-list">
+                <li>Interior vacuum and wipe-down</li>
+                <li>Dash, console, door panels, and high-touch surfaces cleaned</li>
+                <li>Interior glass cleaned</li>
+                <li>Exterior wash and dry</li>
+                <li>Wheels and tires cleaned</li>
+                <li>Exterior glass cleaned</li>
+                <li>Service options based on condition, volume, and frequency</li>
+              </ul>
+
+              <p class="card-meta">Custom quoted based on fleet size, scope, and service frequency</p>
+              <a class="card-link" href="contact.html">Request Fleet Quote →</a>
+            </article>
+          </div>
+
+          <div class="section-header center" style="margin-top: 3rem;">
+            <h3 class="section-title center" style="font-size: clamp(1.25rem, 2vw, 1.6rem); margin-bottom: 0.35rem;">
+              Popular Fleet Add-Ons
+            </h3>
+            <p class="section-subtitle center">
+              Additional services commonly requested for commercial vehicles, higher-use interiors, dealership units,
+              and work-use fleet cleanup.
+            </p>
+          </div>
+
+          <div class="cards addon-cards">
+            <article class="card">
+              <div class="card-top">
+                <div class="card-tag">DRIVER AREA</div>
+                <h3>Front Cabin Reset</h3>
+              </div>
+              <p>
+                Focused cleanup for driver areas, dashboards, cupholders, consoles, door panels,
+                and other high-touch cabin surfaces.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-top">
+                <div class="card-tag">COMMERCIAL ADD-ON</div>
+                <h3>Odor Treatment</h3>
+              </div>
+              <p>
+                Helps improve the cabin environment in work-use and higher-mileage vehicles with lingering odors or heavy daily use.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-top">
+                <div class="card-tag">UTILITY ADD-ON</div>
+                <h3>Engine Bay Detail</h3>
+              </div>
+              <p>
+                Improves presentation and can help make leaks, wear, and developing issues easier to notice during routine checks.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-top">
+                <div class="card-tag">TURNOVER SERVICE</div>
+                <h3>Vehicle Turnover Cleanup</h3>
+              </div>
+              <p>
+                A stronger reset for reassigned vehicles, dealership units, management vehicles, or vehicles preparing for inspection.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-top">
+                <div class="card-tag">DEEP INTERIOR</div>
+                <h3>Condition-Based Interior Cleanup</h3>
+              </div>
+              <p>
+                For fleet vehicles with heavier dirt, debris, stains, work buildup, and higher-use interiors that need more time.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+    <section class="section section-alt" id="fleet-results">
+    <div class="container">
+        <div class="section-header center">
+        <h2 class="section-title center">Fleet and Work Vehicle Results</h2>
+        <p class="section-subtitle center">
+            Real-world improvement for service vehicles, admin vehicles, dealership units, and harder-used commercial interiors.
+            </p>
+            </div>
+
+            <div class="county-results">
+            <article class="county-result">
+                <img
+                src="assets/images/fleet/before-interior.jpg"
+                alt="Service truck interior before mobile fleet detailing"
+                class="county-result-image"
+                />
+                <div class="county-result-body">
+                <h3>Before: Service Vehicle Interior Showing Daily Use</h3>
+                <p>
+                    Dirt, debris, and heavy use in driver areas can leave a work vehicle feeling rough,
+                    neglected, and less professional day to day.
+                </p>
+                </div>
+            </article>
+
+            <article class="county-result">
+                <img
+                src="assets/images/fleet/after-interior.jpg"
+                alt="Service truck interior after mobile fleet detailing"
+                class="county-result-image"
+                />
+                <div class="county-result-body">
+                <h3>After: Cleaner Cabin and Better Daily Presentation</h3>
+                <p>
+                    A proper interior reset improves cleanliness, restores presentation, and helps the
+                    vehicle feel more maintained for drivers and customers alike.
+                </p>
+                </div>
+            </article>
+
+            <article class="county-result">
+                <img
+                src="assets/images/fleet/before-exterior.jpg"
+                alt="Service truck exterior before mobile fleet detailing"
+                class="county-result-image"
+                />
+                <div class="county-result-body">
+                <h3>Before: Exterior Showing Road Film and Work Use</h3>
+                <p>
+                    Dirt, road film, and daily jobsite use can quickly make service vehicles look neglected
+                    and weaken overall company presentation.
+                </p>
+                </div>
+            </article>
+
+            <article class="county-result">
+                <img
+                src="assets/images/fleet/after-exterior.jpg"
+                alt="Service truck exterior after mobile fleet detailing"
+                class="county-result-image"
+                />
+                <div class="county-result-body">
+                <h3>After: Cleaner Finish and Stronger Company Presentation</h3>
+                <p>
+                    A thorough wash and detail helps fleet vehicles present better at customer locations,
+                    offices, and on daily routes.
+                </p>
+                </div>
+            </article>
+
+            <article class="county-result">
+                <img
+                src="assets/images/fleet/before-cargo-area.jpg"
+                alt="Service body cargo area before mobile fleet detailing"
+                class="county-result-image"
+                />
+                <div class="county-result-body">
+                <h3>Before: Cargo Area Showing Heavy Work Buildup</h3>
+                <p>
+                    Storage areas in fleet vehicles can accumulate dirt, residue, and work-related buildup
+                    that make the vehicle feel less organized and less maintained.
+                </p>
+                </div>
+            </article>
+
+            <article class="county-result">
+                <img
+                src="assets/images/fleet/after-cargo-area.jpg"
+                alt="Service body cargo area after mobile fleet detailing"
+                class="county-result-image"
+                />
+                <div class="county-result-body">
+                <h3>After: Cleaner Cargo Space and Better Usability</h3>
+                <p>
+                    A cleaned cargo area improves presentation, supports a more organized appearance, and
+                    helps the vehicle feel more service-ready overall.
+                </p>
+                </div>
+            </article>
+
+            <article class="county-result">
+                <img
+                src="assets/images/fleet/before-wheels-tires.jpg"
+                alt="Fleet truck wheel and tire before detailing"
+                class="county-result-image"
+                />
+                <div class="county-result-body">
+                <h3>Before: Wheels and Tires Dulled by Use</h3>
+                <p>
+                    Brake dust, grime, and daily road use can leave wheels and tires looking worn down and
+                    take away from the vehicle’s overall appearance.
+                </p>
+                </div>
+            </article>
+
+            <article class="county-result">
+                <img
+                src="assets/images/fleet/after-wheels-tires.jpg"
+                alt="Fleet truck wheel and tire after detailing"
+                class="county-result-image"
+                />
+                <div class="county-result-body">
+                <h3>After: Cleaner Wheels and Refined Finish</h3>
+                <p>
+                    Clean wheels and dressed tires make a noticeable difference in how a work vehicle
+                    presents on the road and at customer locations.
+                </p>
+                </div>
+            </article>
+            </div>
+        </div>
+        </section>
+
+      <section class="section" id="fleet-coverage">
+        <div class="container">
+          <div class="section-header center">
+            <h2 class="section-title center">Fleet Types We Work With</h2>
+            <p class="section-subtitle center">
+              Mobile fleet detailing is available for a range of commercial clients across Southwest Florida.
+            </p>
+          </div>
+
+          <div class="county-map">
+            <img
+              src="assets/images/fleet/service-area-map.png"
+              alt="Map showing Southwest Florida fleet detailing service area for Veteran Detail Services"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="county-areas-list">
+            <div class="county-area-pill">Dealership Vehicles</div>
+            <div class="county-area-pill">Service Vans</div>
+            <div class="county-area-pill">Admin Vehicles</div>
+            <div class="county-area-pill">Work Trucks</div>
+            <div class="county-area-pill">Small Business Fleets</div>
+            <div class="county-area-pill">Ask About Larger Accounts</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="fleet-reviews" style="background: #0b0f17; color: #fff;">
+        <div class="container">
+          <div class="section-header center">
+            <h2 class="section-title center" style="color: #fff;">What Commercial Clients Value</h2>
+            <p class="section-subtitle center" style="color: rgba(255,255,255,0.78);">
+              Dependable communication, professional presentation, and service that works around business operations.
+            </p>
+          </div>
+
+          <div class="county-review-grid">
+            <article class="county-review">
+              <div class="county-review-name">Dependable Communication</div>
+              <div class="county-review-source">Commercial Priority</div>
+              <div class="county-review-stars" aria-hidden="true">★★★★★</div>
+              <p>
+                Clear scheduling, direct contact, and straightforward planning matter when multiple vehicles and business operations are involved.
+              </p>
+            </article>
+
+            <article class="county-review">
+              <div class="county-review-name">Professional Presentation</div>
+              <div class="county-review-source">Commercial Priority</div>
+              <div class="county-review-stars" aria-hidden="true">★★★★★</div>
+              <p>
+                Cleaner vehicles help reinforce a better company image at customer locations, on the road, and at the office.
+              </p>
+            </article>
+
+            <article class="county-review">
+              <div class="county-review-name">Repeatable Service</div>
+              <div class="county-review-source">Commercial Priority</div>
+              <div class="county-review-stars" aria-hidden="true">★★★★★</div>
+              <p>
+                Built for ongoing needs, recurring maintenance discussions, and commercial relationships rather than one-off consumer appointments.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="fleet-faq">
+        <div class="container">
+          <div class="section-header center">
+            <h2 class="section-title center">Fleet Detailing FAQ</h2>
+            <p class="section-subtitle center">Quick answers for commercial clients before requesting a fleet quote.</p>
+          </div>
+
+          <div class="faq">
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Do you offer mobile fleet detailing at our location?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a" hidden>
+                Yes. We provide mobile service at commercial properties, offices, dealerships, and job sites when access and scheduling allow.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                How are fleet jobs priced?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a" hidden>
+                Fleet pricing is quoted personally based on vehicle count, vehicle type, condition, scope of work, and service frequency.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Can you handle recurring service schedules?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a" hidden>
+                Yes. Recurring maintenance service can be discussed for fleets that need ongoing vehicle upkeep and better day-to-day presentation.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Do you work on service vans, trucks, dealership vehicles, and admin units?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a" hidden>
+                Yes. We can quote for a range of commercial vehicle types depending on your needs and operating setup.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                What do you need on site?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a" hidden>
+                In most cases we only need access to water. We provide our own power.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="founder-mission" style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <h2>Need a Fleet Detailing Partner?</h2>
+            <p>
+              Request a fleet quote and we’ll follow up personally to review your vehicles, service needs, and scheduling requirements.
+            </p>
+            <div class="founder-actions" style="justify-content: center;">
+              <a href="tel:+19412361478" class="btn-secondary dark">Call Now</a>
+              <a href="contact.html" class="btn-primary">Request Fleet Quote</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div>
+          <div class="footer-title">Veteran Detail Services</div>
+          <div class="footer-sub">Mobile Detailing • Commercial Fleet Service</div>
+        </div>
+
+        <div class="footer-social">
+          <a
+            href="https://www.instagram.com/veterandetailservices.swfl/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Instagram"
+          >
+            <svg viewBox="0 0 24 24" class="social-icon" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"
+              />
+            </svg>
+          </a>
+
+          <a
+            href="https://www.facebook.com/veterandetailservices"
+            target="_blank"
+            rel="noopener"
+            aria-label="Facebook"
+          >
+            <svg viewBox="0 0 24 24" class="social-icon" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M13 22v-8h3l1-4h-4V8c0-1.16.84-2 2-2h2V2h-3c-3.31 0-5 2.69-5 5v3H6v4h3v8h4z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="mobile-cta-bar" aria-label="Quick contact actions">
+      <a class="mobile-cta-btn primary" href="tel:+19412361478">Call</a>
+      <a class="mobile-cta-btn" href="sms:+19412361478">Text</a>
+      <a class="mobile-cta-btn accent" href="contact.html">Quote</a>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "name": "Fleet Vehicle Detailing in Southwest Florida | Veteran Detail Services",
+            "url": "https://veterandetailservices.com/fleet-detailing.html",
+            "description": "Mobile fleet detailing in Southwest Florida for dealerships, service vans, admin vehicles, work trucks, and small business fleets."
+          },
+          {
+            "@type": "AutoDetailing",
+            "name": "Veteran Detail Services",
+            "url": "https://veterandetailservices.com/",
+            "telephone": "+1-941-236-1478",
+            "email": "veterandetailservices.swfl@gmail.com",
+            "areaServed": [
+              "Southwest Florida",
+              "Charlotte County, FL",
+              "Lee County, FL",
+              "DeSoto County, FL"
+            ]
+          }
+        ]
+      }
+    </script>
+  </body>
+</html>

@@ -166,106 +166,127 @@
                 </div>
 
                 <label class="form-block-label" for="vehicleType">Vehicle Type</label>
-                <select name="vehicle_type" id="vehicleType" required>
-                  <option value="" disabled selected>Select vehicle type</option>
-                  <option value="standard_vehicle">Vehicle</option>
-                  <option value="utv">UTV / Side-by-Side</option>
-                  <option value="fleet_vehicle">Fleet Vehicle</option>
-                </select>
+                  <select name="vehicle_type" id="vehicleType" required>
+                    <option value="" disabled selected>Select vehicle type</option>
+                    <option value="standard_vehicle">Vehicle</option>
+                    <option value="utv">UTV / Side-by-Side</option>
+                    <option value="fleet_vehicle">Fleet Vehicle</option>
+                  </select>
 
-                <div class="form-grid" style="margin-top: 1rem;">
-                  <label>
-                    Vehicle (Year / Make / Model)
-                    <input name="vehicle" required placeholder="e.g., 2020 Toyota Camry" autocapitalize="words" />
-                  </label>
-
-                  <label>
-                    Size
-                    <select name="size" id="vehicleSize" required>
-                      <option value="" disabled selected>Select size</option>
-                      <option value="sedan">Sedan / Coupe — starts at $199.99</option>
-                      <option value="small_suv">Small SUV / Truck — starts at $224.99</option>
-                      <option value="large_suv">Large SUV / 3-Row — starts at $249.99</option>
-                    </select>
-                  </label>
-                </div>
-
-                <div class="form-recommendation" style="margin-top: 1rem;">
-                  <span class="recommend-label">Included Service:</span>
-                  <span class="recommend-package">Full Detail Package</span>
-                  starts at <strong>$199.99</strong> for a sedan and includes interior and exterior detailing.
-                </div>
-
-                <label for="interiorCondition" class="form-block-label">Interior Condition</label>
-                <div class="condition-guide">
-                  <div class="condition-card">
-                    <div class="condition-title">Light</div>
-                    <ul>
-                      <li>Well maintained</li>
-                      <li>Minimal debris</li>
-                      <li>No major buildup</li>
-                    </ul>
+                  <div
+                    id="fleetMessage"
+                    class="contact-card"
+                    style="display: none; margin-top: 1rem; margin-bottom: 1.5rem; padding: 1rem 1.1rem;"
+                    aria-live="polite"
+                  >
+                    <h3 style="margin-bottom: 0.4rem;">Commercial / Fleet Quote</h3>
+                    <p style="margin: 0;">
+                      Fleet and commercial jobs are quoted personally based on vehicle count, condition, scope, and service frequency.
+                      Submit the form and we’ll follow up with a call to provide a custom quote.
+                    </p>
                   </div>
 
-                  <div class="condition-card">
-                    <div class="condition-title">Moderate</div>
-                    <ul>
-                      <li>Typical daily driver</li>
-                      <li>Some dirt or crumbs</li>
-                      <li>Moderate use</li>
-                    </ul>
-                  </div>
+                  <div id="standardQuoteFields">
+                    <div class="form-grid" style="margin-top: 1rem;">
+                      <label>
+                        Vehicle (Year / Make / Model)
+                        <input
+                          name="vehicle"
+                          id="vehicleField"
+                          required
+                          placeholder="e.g., 2020 Toyota Camry"
+                          autocapitalize="words"
+                        />
+                      </label>
 
-                  <div class="condition-card">
-                    <div class="condition-title">Heavy</div>
-                    <ul>
-                      <li>Heavy buildup</li>
-                      <li>Stains or debris</li>
-                      <li>Needs deeper reset</li>
-                    </ul>
-                  </div>
-                </div>
+                      <label>
+                        Size
+                        <select name="size" id="vehicleSize" required>
+                          <option value="" disabled selected>Select size</option>
+                          <option value="UTV">UTV / Side by Side - starts at $149.99</option>
+                          <option value="sedan">Sedan / Coupe — starts at $199.99</option>
+                          <option value="small_suv">Small SUV / Truck — starts at $224.99</option>
+                          <option value="large_suv">Large SUV / 3-Row — starts at $249.99</option>
+                        </select>
+                      </label>
+                    </div>
 
-                <select name="interior_condition" id="interiorCondition" required>
-                  <option value="" disabled selected>Select interior condition</option>
-                  <option value="light">Light — +$0</option>
-                  <option value="moderate">Moderate — +$25</option>
-                  <option value="heavy">Heavy — +$50</option>
-                </select>
+                    <div class="form-recommendation" id="formRecommendation" style="margin-top: 1rem;">
+                      <span class="recommend-label">Included Service:</span>
+                      <span class="recommend-package">Full Detail Package</span>
+                      starts at <strong>$199.99</strong> for a sedan and includes interior and exterior detailing.
+                    </div>
 
-                <fieldset class="addons">
-                  <legend>Add-ons</legend>
+                    <label for="interiorCondition" class="form-block-label">Interior Condition</label>
+                    <div class="condition-guide" id="conditionGuide">
+                      <div class="condition-card">
+                        <div class="condition-title">Light</div>
+                        <ul>
+                          <li>Well maintained</li>
+                          <li>Minimal debris</li>
+                          <li>No major buildup</li>
+                        </ul>
+                      </div>
 
-                  <label>
-                    Pet hair removal
-                    <select name="pet_hair_level">
-                      <option value="" selected>No pet hair removal</option>
-                      <option value="light">Light (+$40)</option>
-                      <option value="moderate">Moderate (+$60)</option>
-                      <option value="heavy">Heavy (+$80)</option>
+                      <div class="condition-card">
+                        <div class="condition-title">Moderate</div>
+                        <ul>
+                          <li>Typical daily driver</li>
+                          <li>Some dirt or crumbs</li>
+                          <li>Moderate use</li>
+                        </ul>
+                      </div>
+
+                      <div class="condition-card">
+                        <div class="condition-title">Heavy</div>
+                        <ul>
+                          <li>Heavy buildup</li>
+                          <li>Stains or debris</li>
+                          <li>Needs deeper reset</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <select name="interior_condition" id="interiorCondition" required>
+                      <option value="" disabled selected>Select interior condition</option>
+                      <option value="light">Light — +$0</option>
+                      <option value="moderate">Moderate — +$25</option>
+                      <option value="heavy">Heavy — +$50</option>
                     </select>
-                  </label>
-                  
-                  <label>
-                    Headlight restoration
-                    <select name="headlight_restoration">
-                      <option value="" selected>No headlight restoration</option>
-                      <option value="1_headlight">1 headlight (+$75)</option>
-                      <option value="2_headlights">2 headlights (+$150)</option>
-                    </select>
-                  </label>
 
-                  <label class="check">
-                    <input type="checkbox" name="addons[]" value="paint_decontamination" />
-                    Exterior paint decontamination (+$50)
-                  </label>
+                    <fieldset class="addons" id="addonsFieldset">
+                      <legend>Add-ons</legend>
 
-                  <label class="check">
-                    <input type="checkbox" name="addons[]" value="water_spot_removal" />
-                    Water spot removal (+$25)
-                  </label>
-                  
-                </fieldset>
+                      <label>
+                        Pet hair removal
+                        <select name="pet_hair_level">
+                          <option value="" selected>No pet hair removal</option>
+                          <option value="light">Light (+$40)</option>
+                          <option value="moderate">Moderate (+$60)</option>
+                          <option value="heavy">Heavy (+$80)</option>
+                        </select>
+                      </label>
+
+                      <label>
+                        Headlight restoration
+                        <select name="headlight_restoration">
+                          <option value="" selected>No headlight restoration</option>
+                          <option value="1_headlight">1 headlight (+$75)</option>
+                          <option value="2_headlights">2 headlights (+$150)</option>
+                        </select>
+                      </label>
+
+                      <label class="check">
+                        <input type="checkbox" name="addons[]" value="paint_decontamination" />
+                        Exterior paint decontamination (+$50)
+                      </label>
+
+                      <label class="check">
+                        <input type="checkbox" name="addons[]" value="water_spot_removal" />
+                        Water spot removal (+$25)
+                      </label>
+                    </fieldset>
+                  </div>
 
                 <label>
                   What would you like us to focus on? (optional)
@@ -410,22 +431,39 @@
 
     <script>
       (function () {
-        const quoteForm = document.getElementById('quoteForm');
-        const vehicleSize = document.getElementById('vehicleSize');
-        const interiorCondition = document.getElementById('interiorCondition');
+        const quoteForm = document.getElementById("quoteForm");
+        const vehicleType = document.getElementById("vehicleType");
+        const vehicleSize = document.getElementById("vehicleSize");
+        const interiorCondition = document.getElementById("interiorCondition");
         const petHairLevel = document.querySelector('select[name="pet_hair_level"]');
         const headlightRestoration = document.querySelector('select[name="headlight_restoration"]');
         const addonCheckboxes = document.querySelectorAll('input[name="addons[]"]');
-        const estimateRange = document.getElementById('estimateRange');
-        const estimatedTotalField = document.getElementById('estimatedTotalField');
-        const formStatus = document.getElementById('formStatus');
-        const submitButton = document.getElementById('quoteSubmitBtn');
+        const estimateRange = document.getElementById("estimateRange");
+        const estimatedTotalField = document.getElementById("estimatedTotalField");
+        const formStatus = document.getElementById("formStatus");
+        const submitButton = document.getElementById("quoteSubmitBtn");
 
-        if (!quoteForm || !vehicleSize || !interiorCondition || !petHairLevel || !headlightRestoration || !estimatedTotalField) {
-        return;
+        const standardQuoteFields = document.getElementById("standardQuoteFields");
+        const fleetMessage = document.getElementById("fleetMessage");
+        const vehicleField = document.getElementById("vehicleField");
+
+        if (
+          !quoteForm ||
+          !vehicleType ||
+          !vehicleSize ||
+          !interiorCondition ||
+          !petHairLevel ||
+          !headlightRestoration ||
+          !estimatedTotalField ||
+          !standardQuoteFields ||
+          !fleetMessage ||
+          !vehicleField
+        ) {
+          return;
         }
 
         const sizePricing = {
+          UTV: 149.99,
           sedan: 199.99,
           small_suv: 224.99,
           large_suv: 249.99
@@ -462,6 +500,49 @@
           }).format(value);
         }
 
+        function isFleetMode() {
+          return vehicleType.value === "fleet_vehicle";
+        }
+
+        function resetStandardFields() {
+          vehicleSize.selectedIndex = 0;
+          interiorCondition.selectedIndex = 0;
+          petHairLevel.selectedIndex = 0;
+          headlightRestoration.selectedIndex = 0;
+
+          addonCheckboxes.forEach((checkbox) => {
+            checkbox.checked = false;
+          });
+        }
+
+        function setFleetMode() {
+          standardQuoteFields.style.display = "none";
+          fleetMessage.style.display = "block";
+
+          vehicleField.required = false;
+          vehicleSize.required = false;
+          interiorCondition.required = false;
+
+          resetStandardFields();
+
+          estimatedTotalField.value = "Commercial quote required";
+
+          if (estimateRange) {
+            estimateRange.textContent = "Commercial quote required";
+          }
+        }
+
+        function setStandardMode() {
+          standardQuoteFields.style.display = "";
+          fleetMessage.style.display = "none";
+
+          vehicleField.required = true;
+          vehicleSize.required = true;
+          interiorCondition.required = true;
+
+          updateEstimate();
+        }
+
         function calculateEstimateValue() {
           let total = 199.99;
 
@@ -491,6 +572,16 @@
         }
 
         function updateEstimate() {
+          if (isFleetMode()) {
+            estimatedTotalField.value = "Commercial quote required";
+
+            if (estimateRange) {
+              estimateRange.textContent = "Commercial quote required";
+            }
+
+            return;
+          }
+
           const total = calculateEstimateValue();
           const formattedTotal = formatPrice(total);
 
@@ -501,6 +592,15 @@
           estimatedTotalField.value = formattedTotal;
         }
 
+        function handleVehicleTypeChange() {
+          if (isFleetMode()) {
+            setFleetMode();
+          } else {
+            setStandardMode();
+          }
+        }
+
+        vehicleType.addEventListener("change", handleVehicleTypeChange);
         vehicleSize.addEventListener("change", updateEstimate);
         interiorCondition.addEventListener("change", updateEstimate);
         petHairLevel.addEventListener("change", updateEstimate);
@@ -524,6 +624,11 @@
           try {
             const formData = new FormData(quoteForm);
 
+            if (isFleetMode()) {
+              formData.set("package", "Commercial / Fleet Quote");
+              formData.set("estimated_total", "Commercial quote required");
+            }
+
             const response = await fetch(quoteForm.action, {
               method: "POST",
               body: formData,
@@ -537,7 +642,7 @@
             }
 
             const params = new URLSearchParams({
-              estimate: estimatedTotalField.value,
+              estimate: formData.get("estimated_total") || "",
               vehicle: formData.get("vehicle") || "",
               type: formData.get("vehicle_type") || ""
             });
@@ -556,7 +661,7 @@
           }
         });
 
-        updateEstimate();
+        handleVehicleTypeChange();
       })();
     </script>
       

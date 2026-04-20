@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Car Detailing in Lee County, FL | Veteran Detail Services</title>
+    <meta
+      name="description"
+      content="Veteran-owned mobile car detailing in Lee County, FL for daily drivers, luxury SUVs, sedans, seasonal vehicles, and vacation-area clients. Serving Fort Myers, Cape Coral, Estero, Bonita Springs, and nearby communities."
+    />
+    <meta
+      name="keywords"
+      content="mobile car detailing Lee County FL, Lee County car detailing, Fort Myers car detailing, Cape Coral auto detailing, Estero detailing, Bonita Springs detailing, luxury SUV detailing, seasonal vehicle detailing"
+    />
+
+    <meta property="og:url" content="https://veterandetailservices.com/lee-county-car-detailing.html" />
+    <meta
+      property="og:title"
+      content="Mobile Car Detailing in Lee County, FL | Veteran Detail Services"
+    />
+    <meta
+      property="og:description"
+      content="Mobile interior and exterior detailing for daily drivers, premium SUVs, sedans, and seasonal-use vehicles across Lee County, Florida."
+    />
+    <meta
+      property="og:image"
+      content="https://veterandetailservices.com/assets/images/lee-county/welcome-to-lee-county.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Veteran Detail Services" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <link rel="canonical" href="https://veterandetailservices.com/lee-county-car-detailing.html" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .county-hero {
+        position: relative;
+        min-height: 68vh;
+        display: flex;
+        align-items: center;
+        background:
+            linear-gradient(to right, rgba(12, 35, 64, 0.84), rgba(12, 35, 64, 0.48)),
+            linear-gradient(to top, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.10)),
+            url("assets/images/lee-county/welcome-to-lee-county.png") center center / 75% no-repeat;
+        color: #fff;
+        }
+
+      .county-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 760px;
+        padding: 7rem 0 5rem;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .county-hero h1 {
+        font-size: clamp(2.3rem, 5vw, 4.4rem);
+        line-height: 1.02;
+        margin-bottom: 1rem;
+        color: #fff;
+      }
+
+      .county-hero p {
+        font-size: clamp(1.05rem, 1.9vw, 1.25rem);
+        line-height: 1.65;
+        color: rgba(255, 255, 255, 0.96);
+        margin-bottom: 1.5rem;
+      }
+
+      .county-hero-buttons {
+        display: flex;
+        gap: 0.9rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .county-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 2rem;
+        align-items: start;
+      }
+
+      .county-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: var(--shadow-sm);
+        padding: 1.5rem;
+      }
+
+      .county-card h3 {
+        color: var(--navy);
+        font-weight: 950;
+        margin-bottom: 0.6rem;
+      }
+
+      .county-card p {
+        color: var(--muted);
+        font-weight: 650;
+      }
+
+      .county-points {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .county-point {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        box-shadow: var(--shadow-sm);
+        padding: 1rem;
+      }
+
+      .county-point h3 {
+        color: var(--navy);
+        font-weight: 950;
+        margin-bottom: 0.35rem;
+      }
+
+      .county-point p {
+        color: var(--muted);
+        font-weight: 650;
+      }
+
+      .county-results {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+
+      .county-result {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .county-result-image {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+      }
+
+      .county-result-body {
+        padding: 1rem 1.1rem 1.15rem;
+      }
+
+      .county-result-body h3 {
+        color: var(--navy);
+        font-weight: 950;
+        margin-bottom: 0.35rem;
+      }
+
+      .county-result-body p {
+        color: var(--muted);
+        font-weight: 650;
+      }
+
+      .county-map {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .county-map img {
+        width: 100%;
+        height: auto;
+        border-radius: 22px;
+        border: 1px solid rgba(12, 35, 64, 0.12);
+        box-shadow: var(--shadow-md);
+      }
+
+      .county-areas-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.9rem;
+        margin-top: 1.5rem;
+      }
+
+      .county-area-pill {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.95rem 1rem;
+        border-radius: 16px;
+        background: #fff;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+        font-weight: 900;
+        color: var(--navy);
+      }
+
+      .county-review-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+      }
+
+      .county-review {
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+      }
+
+      .county-review-name {
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 0.25rem;
+      }
+
+      .county-review-source {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.65);
+        margin-bottom: 0.7rem;
+      }
+
+      .county-review-stars {
+        font-size: 1.05rem;
+        letter-spacing: 0.08em;
+        color: #fbbc05;
+        margin-bottom: 0.75rem;
+      }
+
+      .county-review p {
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 600;
+      }
+
+      @media (max-width: 1000px) {
+        .county-grid,
+        .county-review-grid,
+        .county-areas-list {
+          grid-template-columns: 1fr;
+        }
+
+        .county-results {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .county-hero {
+            min-height: 62vh;
+            background:
+            linear-gradient(to top, rgba(12, 35, 64, 0.92), rgba(12, 35, 64, 0.58)),
+            linear-gradient(to right, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.10)),
+            url("assets/images/lee-county/welcome-to-lee-county.png") center center / 95% no-repeat;
+        }
+        }
+
+        .county-hero-content {
+          padding: 6.5rem 0 4.5rem;
+        }
+
+        .county-result-image {
+          height: 240px;
+        }
+      }
+    </style>
+  </head>
+
+  <body id="top">
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <a class="topbar-phone" href="tel:+19412361478" aria-label="Call Veteran Detail Services">
+          <span class="dot"></span> Call: (941) 236-1478
+        </a>
+
+        <div class="topbar-social" aria-label="Social links">
+          <a href="mailto:veterandetailservices.swfl@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" class="social-icon" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"
+              />
+            </svg>
+          </a>
+
+          <a
+            href="https://www.instagram.com/veterandetailservices.swfl/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Instagram"
+          >
+            <svg viewBox="0 0 24 24" class="social-icon" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"
+              />
+            </svg>
+          </a>
+
+          <a
+            href="https://www.facebook.com/veterandetailservices"
+            target="_blank"
+            rel="noopener"
+            aria-label="Facebook"
+          >
+            <svg viewBox="0 0 24 24" class="social-icon" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M13 22v-8h3l1-4h-4V8c0-1.16.84-2 2-2h2V2h-3c-3.31 0-5 2.69-5 5v3H6v4h3v8h4z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <header class="navbar">
+      <div class="container nav-container">
+        <a class="logo-wrapper" href="index.html#top" aria-label="Go to home">
+          <img src="assets/images/vds-logo-header.png" alt="Veteran Detail Services" class="logo" />
+        </a>
+
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primaryNav">
+          <span class="sr-only">Open menu</span>
+          ☰
+        </button>
+
+        <nav class="nav" id="primaryNav" aria-label="Primary">
+          <ul class="nav-links">
+            <li><a href="founder.html">Meet the Founder</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="index.html#areas">Service Area</a></li>
+            <li><a href="index.html#reviews">Reviews</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="contact.html">Quote</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-cta">
+          <a href="contact.html" class="btn-primary">Request Quote</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="county-hero">
+        <div class="container">
+          <div class="county-hero-content">
+            <div class="hero-badge">Lee County • Mobile Service • Veteran-Owned</div>
+            <h1>Mobile Car Detailing in Lee County, FL</h1>
+            <p>
+              Full interior and exterior detailing for daily drivers, premium SUVs, sedans, seasonal vehicles,
+              and vacation-area clients across Lee County. We bring mobile service directly to your home, office,
+              or property and only require access to water on site.
+            </p>
+
+            <div class="county-hero-buttons">
+              <a href="contact.html" class="btn-primary large">Request Quote</a>
+              <a href="gallery.html" class="btn-secondary large">View Gallery</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container">
+          <div class="section-header center">
+            <h2 class="section-title center">Built for Lee County Daily Drivers, Premium Vehicles, and Seasonal Clients</h2>
+            <p class="section-subtitle center">
+              Lee County vehicles often need more than a quick wash or rushed interior wipe-down.
+              Between daily driving, seasonal use, vacation-property stays, and the desire to keep a vehicle
+              looking sharp, presentation matters. Veteran Detail Services provides mobile detailing across Lee County
+              with a disciplined, premium-but-fair approach built around convenience and quality.
+            </p>
+          </div>
+
+          <div class="county-grid">
+            <div class="county-card">
+              <h3>What this page is built for</h3>
+              <p>
+                This Lee County page is designed for personal vehicles where appearance, convenience, and upkeep matter:
+                premium SUVs, sedans, family vehicles, seasonal-use vehicles, and personal daily drivers that need a cleaner,
+                more polished interior and exterior presentation without the hassle of shop drop-offs.
+              </p>
+            </div>
+
+            <div class="county-points">
+              <div class="county-point">
+                <h3>Mobile Convenience</h3>
+                <p>We come to your home, office, condo, or property so you can keep your vehicle maintained without losing time.</p>
+              </div>
+
+              <div class="county-point">
+                <h3>Presentation-Focused Service</h3>
+                <p>Detailing tailored for owners who want a vehicle that looks cleaner, feels better, and presents well day to day.</p>
+              </div>
+
+              <div class="county-point">
+                <h3>Clear, Premium-but-Fair Pricing</h3>
+                <p>Starting prices are based on size and condition, with add-ons available when a vehicle needs additional correction or cleanup.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="lee-services">
+        <div class="container">
+          <div class="section-header center">
+            <h2 class="section-title center">Full Detail Package for Lee County Vehicles</h2>
+            <p class="section-subtitle center">
+              Our core service combines interior and exterior detailing into one complete package for vehicles that need more than basic maintenance-level cleaning.
+            </p>
+          </div>
+
+          <div class="cards" style="display: flex; justify-content: center;">
+            <article class="card" style="max-width: 760px; width: 100%;">
+              <div class="card-top">
+                <h3>Full Detail Package</h3>
+              </div>
+
+              <p>
+                A complete reset for the interior and exterior of your vehicle, built for Lee County daily drivers,
+                premium SUVs, sedans, and personal vehicles where appearance and upkeep matter.
+              </p>
+
+              <ul class="card-list">
+                <li>Interior vacuum and wipe-down of major surfaces</li>
+                <li>Dashboard, console, door panels, and trim cleaned</li>
+                <li>Interior glass cleaned</li>
+                <li>Exterior pre-rinse, hand wash, and dry</li>
+                <li>Wheels and tires cleaned</li>
+                <li>Exterior glass cleaned</li>
+                <li>Paint protection application</li>
+              </ul>
+
+              <p class="card-meta">Starting at $199.99 based on size and condition</p>
+              <a class="card-link" href="contact.html">Request Quote →</a>
+            </article>
+          </div>
+
+          <div class="section-header center" style="margin-top: 3rem;">
+            <h3 class="section-title center" style="font-size: clamp(1.25rem, 2vw, 1.6rem); margin-bottom: 0.35rem;">
+              Popular Lee County Add-Ons
+            </h3>
+            <p class="section-subtitle center">
+              Add-ons for vehicles that need additional finish improvement, cleanup, or appearance-focused correction.
+            </p>
+          </div>
+
+          <div class="cards addon-cards">
+            <article class="card">
+              <div class="card-top">
+                <div class="card-tag">EXTERIOR ADD-ON</div>
+                <h3>Hard Water Spot Removal</h3>
+              </div>
+              <p>
+                Helps reduce mineral spotting on exterior glass and painted surfaces caused by sprinkler exposure,
+                drying minerals, and Florida hard water.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-top">
+                <div class="card-tag">EXTERIOR ADD-ON</div>
+                <h3>Paint Decontamination</h3>
+              </div>
+              <p>
+                Helps remove bonded contamination from paint surfaces for a smoother, cleaner finish and improved overall presentation.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-top">
+                <div class="card-tag">INTERIOR ADD-ON</div>
+                <h3>Spot Treatment for Seats & Carpet</h3>
+              </div>
+              <p>
+                Targets isolated spills, tracked-in dirt, and light staining in high-use interior areas to improve the final look and feel.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-top">
+                <div class="card-tag">RESTORATION</div>
+                <h3>Headlight Restoration</h3>
+              </div>
+              <p>
+                Improves clarity and appearance for cloudy or oxidized headlights and helps clean up the front-end presentation of the vehicle.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="lee-results">
+        <div class="container">
+          <div class="section-header center">
+            <h2 class="section-title center">Lee County Before and After Results</h2>
+            <p class="section-subtitle center">
+              Real results from personal vehicles that needed a cleaner, sharper, more presentation-ready finish.
+            </p>
+          </div>
+
+          <div class="county-results">
+            <article class="county-result">
+              <img
+                src="assets/images/lee-county/lee-before-1.jpg"
+                alt="Vehicle interior before mobile detailing in Lee County"
+                class="county-result-image"
+              />
+              <div class="county-result-body">
+                <h3>Before: Exterior Panels Showing Road Film</h3>
+                <p>Normal driving buildup, light grime, and water spotting can leave paint looking duller and less refined than it should.</p>
+              </div>
+            </article>
+
+            <article class="county-result">
+              <img
+                src="assets/images/lee-county/lee-after-1.jpg"
+                alt="Vehicle interior after mobile detailing in Lee County"
+                class="county-result-image"
+              />
+              <div class="county-result-body">
+                <h3>After: Cleaner Paint and Brighter Finish</h3>
+                <p>A proper wash and detail restores clarity, improves gloss, and gives the vehicle a cleaner, more cared-for appearance.</p>
+              </div>
+            </article>
+
+            <article class="county-result">
+              <img
+                src="assets/images/lee-county/lee-before-2.jpg"
+                alt="Vehicle exterior before detailing in Lee County"
+                class="county-result-image"
+              />
+              <div class="county-result-body">
+                <h3>Before: Engine Bay Showing Dust and Buildup</h3>
+                <p>Dust, debris, and residue in the engine bay can make an otherwise nice vehicle look neglected when the hood is opened.</p>
+              </div>
+            </article>
+
+            <article class="county-result">
+              <img
+                src="assets/images/lee-county/lee-after-2.jpg"
+                alt="Vehicle exterior after detailing in Lee County"
+                class="county-result-image"
+              />
+              <div class="county-result-body">
+                <h3>After: Detailed Engine Bay Presentation</h3>
+                <p>Beyond the cleaner appearance, a properly detailed engine bay can help make leaks, wear, and other developing problem areas
+                    easier to identify early.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="lee-map">
+        <div class="container">
+          <div class="section-header center">
+            <h2 class="section-title center">Serving Lee County and Nearby Communities</h2>
+            <p class="section-subtitle center">
+              Mobile detailing service is available across Lee County, including Fort Myers, Cape Coral, North Fort Myers, Lehigh Acres, and nearby communities.
+            </p>
+          </div>
+
+          <div class="county-map">
+            <img
+              src="assets/images/lee-county/lee-county-map.png"
+              alt="Map showing Lee County, Florida service area for Veteran Detail Services"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="county-areas-list">
+            <div class="county-area-pill">Fort Myers</div>
+            <div class="county-area-pill">Cape Coral</div>
+            <div class="county-area-pill">North Fort Myers</div>
+            <div class="county-area-pill">Lehigh Acres</div>
+            <div class="county-area-pill">Nearby Communities</div>
+            <div class="county-area-pill">Ask About Availability</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="lee-reviews" style="background: #0b0f17; color: #fff;">
+        <div class="container">
+          <div class="section-header center">
+            <h2 class="section-title center" style="color: #fff;">What Lee County Clients Value</h2>
+            <p class="section-subtitle center" style="color: rgba(255,255,255,0.78);">
+              Professional communication, mobile convenience, and results that improve how a vehicle looks and feels.
+            </p>
+          </div>
+
+          <div class="county-review-grid">
+            <article class="county-review">
+              <div class="county-review-name">Scott Galloway</div>
+              <div class="county-review-source">Google Review</div>
+              <div class="county-review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p>
+                “Jake and his team are great to work with. Punctual, performed work better than expected,
+                and had constant communication throughout the service.”
+              </p>
+            </article>
+
+            <article class="county-review">
+              <div class="county-review-name">Savanna Baker</div>
+              <div class="county-review-source">Google Review</div>
+              <div class="county-review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p>
+                “Jake did an amazing job. His attention to detail is exactly what I was looking for.”
+              </p>
+            </article>
+
+            <article class="county-review">
+              <div class="county-review-name">Faith Ayers</div>
+              <div class="county-review-source">Google Review</div>
+              <div class="county-review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p>
+                “Jake is someone who genuinely cares about doing quality work and treating people right.”
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="lee-faq">
+        <div class="container">
+          <div class="section-header center">
+            <h2 class="section-title center">Lee County FAQ</h2>
+            <p class="section-subtitle center">Quick answers for Lee County customers before requesting a quote.</p>
+          </div>
+
+          <div class="faq">
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Do you offer mobile car detailing throughout Lee County?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a" hidden>
+                Yes. We provide mobile detailing throughout Lee County and nearby areas when scheduling allows, including Fort Myers,
+                Cape Coral, Estero, Bonita Springs, and surrounding communities.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Do you work on premium SUVs, sedans, and seasonal-use vehicles?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a" hidden>
+                Yes. This page is designed around the type of personal vehicles many Lee County customers want maintained well:
+                daily drivers, premium personal vehicles, seasonal-use vehicles, and vehicles where overall presentation matters.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Do you need power or water on site?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a" hidden>
+                At this time, we only require access to a water source on site. We provide our own power.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                How is pricing determined?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a" hidden>
+                Pricing starts based on vehicle size and increases based on interior condition and selected add-ons.
+                Final pricing is confirmed after review of the vehicle details and condition.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Can you help improve water spotting, finish quality, and overall presentation?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a" hidden>
+                Yes. Hard water spot removal, paint decontamination, and other add-ons are available when a vehicle needs additional appearance-focused correction.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="founder-mission" style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <h2>Need Mobile Car Detailing in Lee County?</h2>
+            <p>
+              Request a quote and we’ll review your vehicle, confirm its condition, and recommend the right service and add-ons for your needs.
+            </p>
+            <div class="founder-actions" style="justify-content: center;">
+              <a href="gallery.html" class="btn-secondary dark">View Gallery</a>
+              <a href="contact.html" class="btn-primary">Request Quote</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div>
+          <div class="footer-title">Veteran Detail Services</div>
+          <div class="footer-sub">Mobile Detailing • Serving Lee County</div>
+        </div>
+
+        <div class="footer-social">
+          <a
+            href="https://www.instagram.com/veterandetailservices.swfl/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Instagram"
+          >
+            <svg viewBox="0 0 24 24" class="social-icon" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"
+              />
+            </svg>
+          </a>
+
+          <a
+            href="https://www.facebook.com/veterandetailservices"
+            target="_blank"
+            rel="noopener"
+            aria-label="Facebook"
+          >
+            <svg viewBox="0 0 24 24" class="social-icon" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M13 22v-8h3l1-4h-4V8c0-1.16.84-2 2-2h2V2h-3c-3.31 0-5 2.69-5 5v3H6v4h3v8h4z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="mobile-cta-bar" aria-label="Quick contact actions">
+      <a class="mobile-cta-btn primary" href="tel:+19412361478">Call</a>
+      <a class="mobile-cta-btn" href="sms:+19412361478">Text</a>
+      <a class="mobile-cta-btn accent" href="contact.html">Quote</a>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "name": "Lee County Mobile Car Detailing | Veteran Detail Services",
+            "url": "https://veterandetailservices.com/lee-county-car-detailing.html",
+            "description": "Mobile car detailing in Lee County, Florida for daily drivers, premium SUVs, sedans, and seasonal-use vehicles."
+          },
+          {
+            "@type": "AutoDetailing",
+            "name": "Veteran Detail Services",
+            "url": "https://veterandetailservices.com/",
+            "telephone": "+1-941-236-1478",
+            "email": "veterandetailservices.swfl@gmail.com",
+            "areaServed": [
+              "Lee County, FL",
+              "Fort Myers, FL",
+              "Cape Coral, FL",
+              "Estero, FL",
+              "Bonita Springs, FL"
+              "Lehigh Acres, FL"
+              "North Fort Myers, FL"
+            ]
+          }
+        ]
+      }
+    </script>
+  </body>
+</html>
