@@ -851,6 +851,34 @@ section{
   max-width: 760px;
 }
 
+.deposit-note{
+  margin-top: 0.85rem;
+  color: rgba(255,255,255,0.92);
+  font-weight: 750;
+  font-size: 0.98rem;
+}
+
+.booking-cta-box{
+  margin: 1.25rem 0;
+  padding: 1.35rem;
+  border-radius: 18px;
+  border: 1px solid rgba(12,35,64,0.10);
+  background: linear-gradient(135deg, rgba(61,180,231,0.10), rgba(12,35,64,0.06));
+  box-shadow: var(--shadow-sm);
+}
+
+.booking-cta-box h3{
+  color: var(--navy);
+  font-weight: 950;
+  margin-bottom: 0.35rem;
+}
+
+.booking-cta-box p{
+  color: var(--muted);
+  font-weight: 650;
+  margin-bottom: 1rem;
+}
+
 @media (max-width: 768px) {
   #services .addon-cards{
     display: grid !important;

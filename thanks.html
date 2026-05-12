@@ -98,14 +98,21 @@
                 $199.99
               </div>
               <p class="mini-note" id="thanksEstimateNote" style="margin-top: 0.6rem;">
-                This estimate is based on the information submitted. Final pricing will be confirmed upon vehicle inspection and condition verification.
+                This estimate is based on the information submitted. Final pricing will be confirmed upon vehicle inspection and condition verification. 
+                A $50 deposit is required to reserve your appointment and is applied toward your final invoice.
               </p>
             </div>
 
             <div class="founder-actions" style="justify-content: center; margin-top: 1.5rem;">
               <a href="gallery.html" class="btn-secondary dark">View Gallery</a>
-              <a href="index.html" class="btn-primary">Back to Home</a>
+              <a href="https://veteran-detail-services.square.site" class="btn-primary" target="_blank" rel="noopener">
+                Reserve Appointment
+              </a>
             </div>
+
+            <p class="mini-note" id="reserveNote" style="margin-top: 1rem;">
+              Ready to move forward? Reserve your appointment through Square with a $50 deposit applied toward your final invoice.
+            </p>
           </div>
         </div>
       </section>
@@ -134,6 +141,7 @@
         const thanksEstimateLabel = document.getElementById("thanksEstimateLabel");
         const thanksEstimate = document.getElementById("thanksEstimate");
         const thanksEstimateNote = document.getElementById("thanksEstimateNote");
+        const reserveNote = document.getElementById("reserveNote");
 
         if (
           !thanksHeading ||
@@ -157,6 +165,10 @@
           thanksEstimateNote.textContent =
             "Fleet and commercial jobs are reviewed individually so we can provide accurate pricing based on scope, vehicle count, condition, and scheduling needs.";
 
+        if (reserveNote) {
+          reserveNote.textContent =
+            "Fleet and commercial requests are handled personally. We’ll follow up to review scope, vehicle count, scheduling, and pricing before anything is booked.";
+        }
           return;
         }
 

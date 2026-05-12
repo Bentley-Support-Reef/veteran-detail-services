@@ -11,7 +11,7 @@
     <title>Request a Quote | Mobile Car Detailing Serving South West Florida | Veteran Detail Services</title>
     <meta
       name="description"
-      content="Request a mobile detailing quote from Veteran Detail Services in Charlotte County, FL. Get pricing for full interior and exterior detailing, fleet vehicles, UTVs, pet hair removal, paint decontamination, water spot removal, and headlight restoration."
+      content="Request a mobile detailing quote from Veteran Detail Services in Charlotte County, FL. Get pricing for full interior and exterior detailing, fleet vehicles, UTVs, pet hair and sand removal, headlight restoration, and engine bay cleaning."
     />
     <meta
       name="keywords"
@@ -111,7 +111,9 @@
         </nav>
 
         <div class="nav-cta">
-          <a href="contact.html" class="btn-primary">Request Quote</a>
+          <a href="https://veteran-detail-services.square.site" class="btn-primary" target="_blank" rel="noopener">
+            Reserve Appointment
+          </a>
         </div>
       </div>
     </header>
@@ -122,9 +124,8 @@
           <div class="section-header center">
             <h1 class="section-title center">Request Your Quote</h1>
             <p class="section-subtitle center">
-              Tell us about your vehicle, its size, condition, and any add-ons you want included.
-              Our Full Detail Package starts at <strong>$199.99</strong> and includes both interior and exterior detailing,
-              with condition-based and size-based adjustments for more accurate quoting.
+              Ready to book? Reserve your appointment online with a $50 deposit applied toward your final invoice.
+              Still unsure? Submit the quote form below and we’ll personally review your vehicle details before scheduling.
             </p>
             <p class="mini-note center">
               Mobile detailing for cars, trucks, SUVs, UTVs, and select fleet vehicles across South West Florida.
@@ -137,6 +138,19 @@
         <div class="container">
           <div class="contact-stack">
             <div>
+              <section class="booking-cta-box">
+                <h3>Ready to Reserve Your Appointment?</h3>
+                <p>
+                  Use our online booking system to request your appointment time, complete your intake details,
+                  and pay the $50 deposit that is applied toward your final invoice.
+                </p>
+                <a href="https://veteran-detail-services.square.site" class="btn-primary large" target="_blank" rel="noopener">
+                  Reserve Appointment
+                </a>
+                <p class="mini-note">
+                  Appointment requests are reviewed before confirmation. Final pricing is confirmed based on vehicle size, condition, and selected add-ons.
+                </p>
+              </section>
               <form class="form" id="quoteForm" action="https://formspree.io/f/xpqjkpwk" method="POST">
                 <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" />
                 <input type="hidden" name="_subject" value="🚗 New Veteran Detail Services Quote Request" />
@@ -258,17 +272,17 @@
                       <legend>Add-ons</legend>
 
                       <label>
-                        Pet hair removal
-                        <select name="pet_hair_level">
-                          <option value="" selected>No pet hair removal</option>
-                          <option value="light">Light (+$40)</option>
-                          <option value="moderate">Moderate (+$60)</option>
-                          <option value="heavy">Heavy (+$80)</option>
+                        Pet Hair / Sand Removal
+                        <select name="pet_hair_sand_level">
+                          <option value="" selected>No pet hair or sand removal</option>
+                          <option value="light">Light (+$20)</option>
+                          <option value="moderate">Moderate (+$40)</option>
+                          <option value="heavy">Heavy (+$60)</option>
                         </select>
                       </label>
 
                       <label>
-                        Headlight restoration
+                        Headlight Restoration
                         <select name="headlight_restoration">
                           <option value="" selected>No headlight restoration</option>
                           <option value="1_headlight">1 headlight (+$75)</option>
@@ -277,14 +291,13 @@
                       </label>
 
                       <label class="check">
-                        <input type="checkbox" name="addons[]" value="paint_decontamination" />
-                        Exterior paint decontamination (+$50)
+                        <input type="checkbox" name="addons[]" value="engine_bay_cleaning" />
+                        Engine bay cleaning (+$50)
                       </label>
 
-                      <label class="check">
-                        <input type="checkbox" name="addons[]" value="water_spot_removal" />
-                        Water spot removal (+$25)
-                      </label>
+                      <p class="mini-note">
+                        Paint decontamination and water spot treatment may be included as needed during the Full Detail Package and are not separate paid add-ons at this time.
+                      </p>
                     </fieldset>
                   </div>
 
@@ -293,7 +306,7 @@
                   <textarea
                     name="message"
                     rows="5"
-                    placeholder="Examples: pet hair in the rear seats, heavy sand in the floorboards, water spots on paint, fleet pricing request, or UTV cleanup."
+                    placeholder="Examples: pet hair in the rear seats, heavy sand in the floorboards, cloudy headlights, engine bay cleaning, fleet pricing request, UTV cleanup, or any specific concerns."
                   ></textarea>
                 </label>
 
@@ -424,7 +437,9 @@
     <div class="mobile-cta-bar">
       <a href="tel:+19412361478" class="mobile-cta-btn primary">Call</a>
       <a href="sms:+19412361478?body=Hi%20Veteran%20Detail%20Services,%20I%E2%80%99d%20like%20a%20quote." class="mobile-cta-btn">Text</a>
-      <a href="contact.html" class="mobile-cta-btn accent">Quote</a>
+      <a href="https://veteran-detail-services.square.site" class="mobile-cta-btn accent" target="_blank" rel="noopener">
+        Reserve
+      </a>
     </div>
 
     <script src="assets/js/main.js"></script>
@@ -435,7 +450,7 @@
         const vehicleType = document.getElementById("vehicleType");
         const vehicleSize = document.getElementById("vehicleSize");
         const interiorCondition = document.getElementById("interiorCondition");
-        const petHairLevel = document.querySelector('select[name="pet_hair_level"]');
+        const petHairSandLevel = document.querySelector('select[name="pet_hair_sand_level"]');
         const headlightRestoration = document.querySelector('select[name="headlight_restoration"]');
         const addonCheckboxes = document.querySelectorAll('input[name="addons[]"]');
         const estimateRange = document.getElementById("estimateRange");
@@ -452,7 +467,7 @@
           !vehicleType ||
           !vehicleSize ||
           !interiorCondition ||
-          !petHairLevel ||
+          !petHairSandLevel ||
           !headlightRestoration ||
           !estimatedTotalField ||
           !standardQuoteFields ||
@@ -475,11 +490,11 @@
           heavy: 50
         };
 
-        const petHairPricing = {
+        const petHairSandPricing = {
           "": 0,
-          light: 40,
-          moderate: 60,
-          heavy: 80
+          light: 20,
+          moderate: 40,
+          heavy: 60
         };
 
         const headlightPricing = {
@@ -489,8 +504,7 @@
         };
 
         const checkboxPricing = {
-          paint_decontamination: 50,
-          water_spot_removal: 25
+          engine_bay_cleaning: 50
         };
 
         function formatPrice(value) {
@@ -507,7 +521,7 @@
         function resetStandardFields() {
           vehicleSize.selectedIndex = 0;
           interiorCondition.selectedIndex = 0;
-          petHairLevel.selectedIndex = 0;
+          petHairSandLevel.selectedIndex = 0;
           headlightRestoration.selectedIndex = 0;
 
           addonCheckboxes.forEach((checkbox) => {
@@ -554,8 +568,8 @@
             total += conditionPricing[interiorCondition.value];
           }
 
-          if (petHairPricing[petHairLevel.value] !== undefined) {
-            total += petHairPricing[petHairLevel.value];
+          if (petHairSandPricing[petHairSandLevel.value] !== undefined) {
+            total += petHairSandPricing[petHairSandLevel.value];
           }
 
           if (headlightPricing[headlightRestoration.value] !== undefined) {
@@ -603,7 +617,7 @@
         vehicleType.addEventListener("change", handleVehicleTypeChange);
         vehicleSize.addEventListener("change", updateEstimate);
         interiorCondition.addEventListener("change", updateEstimate);
-        petHairLevel.addEventListener("change", updateEstimate);
+        petHairSandLevel.addEventListener("change", updateEstimate);
         headlightRestoration.addEventListener("change", updateEstimate);
         addonCheckboxes.forEach((checkbox) => checkbox.addEventListener("change", updateEstimate));
 
