@@ -170,7 +170,7 @@
 
                   <label>
                     Email
-                    <input type="email" name="email" autocomplete="email" />
+                    <input type="email" name="email" required autocomplete="email" />
                   </label>
 
                   <label>
@@ -179,13 +179,12 @@
                   </label>
                 </div>
 
-                <label class="form-block-label" for="vehicleType">Vehicle Type</label>
-                  <select name="vehicle_type" id="vehicleType" required>
-                    <option value="" disabled selected>Select vehicle type</option>
-                    <option value="standard_vehicle">Vehicle</option>
-                    <option value="utv">UTV / Side-by-Side</option>
-                    <option value="fleet_vehicle">Fleet Vehicle</option>
-                  </select>
+                <input type="hidden" name="quote_type" id="quoteTypeField" value="Personal Vehicle Quote" />
+
+                  <label class="check" style="margin-top: 1rem;">
+                    <input type="checkbox" id="fleetQuoteToggle" name="fleet_quote_requested" value="yes" />
+                    I need a fleet / commercial quote
+                  </label>
 
                   <div
                     id="fleetMessage"
@@ -195,8 +194,8 @@
                   >
                     <h3 style="margin-bottom: 0.4rem;">Commercial / Fleet Quote</h3>
                     <p style="margin: 0;">
-                      Fleet and commercial jobs are quoted personally based on vehicle count, condition, scope, and service frequency.
-                      Submit the form and we’ll follow up with a call to provide a custom quote.
+                      Fleet and commercial jobs are quoted personally based on vehicle count, vehicle type, condition, scope, and service frequency.
+                      Submit your name, phone number, email, and any notes you have. We’ll follow up directly to build a custom quote.
                     </p>
                   </div>
 
@@ -218,9 +217,9 @@
                         <select name="size" id="vehicleSize" required>
                           <option value="" disabled selected>Select size</option>
                           <option value="UTV">UTV / Side by Side - starts at $149.99</option>
-                          <option value="sedan">Sedan / Coupe — starts at $199.99</option>
-                          <option value="small_suv">Small SUV / Truck — starts at $224.99</option>
-                          <option value="large_suv">Large SUV / 3-Row — starts at $249.99</option>
+                          <option value="sedan_small_suv">Sedan / Small SUV — starts at $199.99</option>
+                          <option value="midsize_suv_truck">Midsize SUV / Truck — starts at $249.99</option>
+                          <option value="large_suv_3row">Large SUV / 3-Row — starts at $299.99</option>
                         </select>
                       </label>
                     </div>
@@ -228,7 +227,7 @@
                     <div class="form-recommendation" id="formRecommendation" style="margin-top: 1rem;">
                       <span class="recommend-label">Included Service:</span>
                       <span class="recommend-package">Full Detail Package</span>
-                      starts at <strong>$199.99</strong> for a sedan and includes interior and exterior detailing.
+                      starts at <strong>$199.99</strong> for a sedans / small SUVs and includes interior and exterior detailing.
                     </div>
 
                     <label for="interiorCondition" class="form-block-label">Interior Condition</label>
@@ -323,7 +322,7 @@
                 <div class="what-next" style="border-top: 0; padding-top: 0; margin-top: 0;">
                   <h4>What happens next</h4>
                   <ol class="next-steps">
-                    <li><strong>Submit your request.</strong> We review your vehicle type, size, condition, and add-ons.</li>
+                    <li><strong>Submit your request.</strong> We review your contact info, service area, vehicle details, and any fleet or commercial notes.</li>
                     <li><strong>Personal follow-up.</strong> We confirm details, answer questions, and refine pricing if needed.</li>
                     <li><strong>Final scheduling.</strong> Once approved, we lock in the appointment.</li>
                   </ol>
@@ -445,239 +444,265 @@
     <script src="assets/js/main.js"></script>
 
     <script>
-      (function () {
-        const quoteForm = document.getElementById("quoteForm");
-        const vehicleType = document.getElementById("vehicleType");
-        const vehicleSize = document.getElementById("vehicleSize");
-        const interiorCondition = document.getElementById("interiorCondition");
-        const petHairSandLevel = document.querySelector('select[name="pet_hair_sand_level"]');
-        const headlightRestoration = document.querySelector('select[name="headlight_restoration"]');
-        const addonCheckboxes = document.querySelectorAll('input[name="addons[]"]');
-        const estimateRange = document.getElementById("estimateRange");
-        const estimatedTotalField = document.getElementById("estimatedTotalField");
-        const formStatus = document.getElementById("formStatus");
-        const submitButton = document.getElementById("quoteSubmitBtn");
+  (function () {
+    const quoteForm = document.getElementById("quoteForm");
+    const fleetQuoteToggle = document.getElementById("fleetQuoteToggle");
+    const quoteTypeField = document.getElementById("quoteTypeField");
+    const vehicleField = document.getElementById("vehicleField");
+    const vehicleSize = document.getElementById("vehicleSize");
+    const interiorCondition = document.getElementById("interiorCondition");
+    const petHairSandLevel = document.querySelector('select[name="pet_hair_sand_level"]');
+    const headlightRestoration = document.querySelector('select[name="headlight_restoration"]');
+    const addonCheckboxes = document.querySelectorAll('input[name="addons[]"]');
+    const estimateRange = document.getElementById("estimateRange");
+    const estimatedTotalField = document.getElementById("estimatedTotalField");
+    const formStatus = document.getElementById("formStatus");
+    const submitButton = document.getElementById("quoteSubmitBtn");
 
-        const standardQuoteFields = document.getElementById("standardQuoteFields");
-        const fleetMessage = document.getElementById("fleetMessage");
-        const vehicleField = document.getElementById("vehicleField");
+    const standardQuoteFields = document.getElementById("standardQuoteFields");
+    const fleetMessage = document.getElementById("fleetMessage");
 
-        if (
-          !quoteForm ||
-          !vehicleType ||
-          !vehicleSize ||
-          !interiorCondition ||
-          !petHairSandLevel ||
-          !headlightRestoration ||
-          !estimatedTotalField ||
-          !standardQuoteFields ||
-          !fleetMessage ||
-          !vehicleField
-        ) {
-          return;
+    if (
+      !quoteForm ||
+      !fleetQuoteToggle ||
+      !quoteTypeField ||
+      !vehicleField ||
+      !vehicleSize ||
+      !interiorCondition ||
+      !petHairSandLevel ||
+      !headlightRestoration ||
+      !estimatedTotalField ||
+      !standardQuoteFields ||
+      !fleetMessage
+    ) {
+      return;
+    }
+
+    const sizePricing = {
+      UTV: 149.99,
+      sedan_small_suv: 199.99,
+      midsize_suv_truck: 249.99,
+      large_suv_3row: 299.99
+    };
+
+    const conditionPricing = {
+      light: 0,
+      moderate: 25,
+      heavy: 50
+    };
+
+    const petHairSandPricing = {
+      "": 0,
+      light: 20,
+      moderate: 40,
+      heavy: 60
+    };
+
+    const headlightPricing = {
+      "": 0,
+      "1_headlight": 75,
+      "2_headlights": 150
+    };
+
+    const checkboxPricing = {
+      engine_bay_cleaning: 50
+    };
+
+    function formatPrice(value) {
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD"
+      }).format(value);
+    }
+
+    function isFleetMode() {
+      return fleetQuoteToggle.checked;
+    }
+
+    function resetStandardFields() {
+      vehicleField.value = "";
+      vehicleSize.selectedIndex = 0;
+      interiorCondition.selectedIndex = 0;
+      petHairSandLevel.selectedIndex = 0;
+      headlightRestoration.selectedIndex = 0;
+
+      addonCheckboxes.forEach((checkbox) => {
+        checkbox.checked = false;
+      });
+    }
+
+    function setFleetMode() {
+      standardQuoteFields.style.display = "none";
+      fleetMessage.style.display = "block";
+
+      quoteTypeField.value = "Commercial / Fleet Quote";
+      estimatedTotalField.value = "Commercial quote required";
+
+      vehicleField.required = false;
+      vehicleSize.required = false;
+      interiorCondition.required = false;
+
+      resetStandardFields();
+
+      if (estimateRange) {
+        estimateRange.textContent = "Commercial quote required";
+      }
+
+      if (submitButton) {
+        submitButton.textContent = "Request Fleet Quote";
+      }
+    }
+
+    function setStandardMode() {
+      standardQuoteFields.style.display = "";
+      fleetMessage.style.display = "none";
+
+      quoteTypeField.value = "Personal Vehicle Quote";
+
+      vehicleField.required = true;
+      vehicleSize.required = true;
+      interiorCondition.required = true;
+
+      if (submitButton) {
+        submitButton.textContent = "Request Quote";
+      }
+
+      updateEstimate();
+    }
+
+    function calculateEstimateValue() {
+      let total = 199.99;
+
+      if (vehicleSize.value && sizePricing[vehicleSize.value] !== undefined) {
+        total = sizePricing[vehicleSize.value];
+      }
+
+      if (interiorCondition.value && conditionPricing[interiorCondition.value] !== undefined) {
+        total += conditionPricing[interiorCondition.value];
+      }
+
+      if (petHairSandPricing[petHairSandLevel.value] !== undefined) {
+        total += petHairSandPricing[petHairSandLevel.value];
+      }
+
+      if (headlightPricing[headlightRestoration.value] !== undefined) {
+        total += headlightPricing[headlightRestoration.value];
+      }
+
+      addonCheckboxes.forEach((checkbox) => {
+        if (checkbox.checked && checkboxPricing[checkbox.value] !== undefined) {
+          total += checkboxPricing[checkbox.value];
+        }
+      });
+
+      return total;
+    }
+
+    function updateEstimate() {
+      if (isFleetMode()) {
+        estimatedTotalField.value = "Commercial quote required";
+
+        if (estimateRange) {
+          estimateRange.textContent = "Commercial quote required";
         }
 
-        const sizePricing = {
-          UTV: 149.99,
-          sedan: 199.99,
-          small_suv: 224.99,
-          large_suv: 249.99
-        };
+        return;
+      }
 
-        const conditionPricing = {
-          light: 0,
-          moderate: 25,
-          heavy: 50
-        };
+      const total = calculateEstimateValue();
+      const formattedTotal = formatPrice(total);
 
-        const petHairSandPricing = {
-          "": 0,
-          light: 20,
-          moderate: 40,
-          heavy: 60
-        };
+      estimatedTotalField.value = formattedTotal;
 
-        const headlightPricing = {
-          "": 0,
-          "1_headlight": 75,
-          "2_headlights": 150
-        };
+      if (estimateRange) {
+        estimateRange.textContent = formattedTotal;
+      }
+    }
 
-        const checkboxPricing = {
-          engine_bay_cleaning: 50
-        };
+    function handleFleetToggle() {
+      if (isFleetMode()) {
+        setFleetMode();
+      } else {
+        setStandardMode();
+      }
+    }
 
-        function formatPrice(value) {
-          return new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "USD"
-          }).format(value);
+    fleetQuoteToggle.addEventListener("change", handleFleetToggle);
+    vehicleSize.addEventListener("change", updateEstimate);
+    interiorCondition.addEventListener("change", updateEstimate);
+    petHairSandLevel.addEventListener("change", updateEstimate);
+    headlightRestoration.addEventListener("change", updateEstimate);
+
+    addonCheckboxes.forEach((checkbox) => {
+      checkbox.addEventListener("change", updateEstimate);
+    });
+
+    quoteForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      updateEstimate();
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = isFleetMode() ? "Sending Fleet Quote..." : "Sending...";
+      }
+
+      if (formStatus) {
+        formStatus.textContent = "";
+        formStatus.className = "form-status";
+      }
+
+      try {
+        const formData = new FormData(quoteForm);
+
+        if (isFleetMode()) {
+          formData.set("package", "Commercial / Fleet Quote");
+          formData.set("quote_type", "Commercial / Fleet Quote");
+          formData.set("estimated_total", "Commercial quote required");
+          formData.set("vehicle", "Fleet / Commercial Quote");
+          formData.delete("size");
+          formData.delete("interior_condition");
+          formData.delete("pet_hair_sand_level");
+          formData.delete("headlight_restoration");
+          formData.delete("addons[]");
+        } else {
+          formData.set("quote_type", "Personal Vehicle Quote");
         }
 
-        function isFleetMode() {
-          return vehicleType.value === "fleet_vehicle";
-        }
-
-        function resetStandardFields() {
-          vehicleSize.selectedIndex = 0;
-          interiorCondition.selectedIndex = 0;
-          petHairSandLevel.selectedIndex = 0;
-          headlightRestoration.selectedIndex = 0;
-
-          addonCheckboxes.forEach((checkbox) => {
-            checkbox.checked = false;
-          });
-        }
-
-        function setFleetMode() {
-          standardQuoteFields.style.display = "none";
-          fleetMessage.style.display = "block";
-
-          vehicleField.required = false;
-          vehicleSize.required = false;
-          interiorCondition.required = false;
-
-          resetStandardFields();
-
-          estimatedTotalField.value = "Commercial quote required";
-
-          if (estimateRange) {
-            estimateRange.textContent = "Commercial quote required";
-          }
-        }
-
-        function setStandardMode() {
-          standardQuoteFields.style.display = "";
-          fleetMessage.style.display = "none";
-
-          vehicleField.required = true;
-          vehicleSize.required = true;
-          interiorCondition.required = true;
-
-          updateEstimate();
-        }
-
-        function calculateEstimateValue() {
-          let total = 199.99;
-
-          if (vehicleSize.value && sizePricing[vehicleSize.value] !== undefined) {
-            total = sizePricing[vehicleSize.value];
-          }
-
-          if (interiorCondition.value && conditionPricing[interiorCondition.value] !== undefined) {
-            total += conditionPricing[interiorCondition.value];
-          }
-
-          if (petHairSandPricing[petHairSandLevel.value] !== undefined) {
-            total += petHairSandPricing[petHairSandLevel.value];
-          }
-
-          if (headlightPricing[headlightRestoration.value] !== undefined) {
-            total += headlightPricing[headlightRestoration.value];
-          }
-
-          addonCheckboxes.forEach((checkbox) => {
-            if (checkbox.checked && checkboxPricing[checkbox.value] !== undefined) {
-              total += checkboxPricing[checkbox.value];
-            }
-          });
-
-          return total;
-        }
-
-        function updateEstimate() {
-          if (isFleetMode()) {
-            estimatedTotalField.value = "Commercial quote required";
-
-            if (estimateRange) {
-              estimateRange.textContent = "Commercial quote required";
-            }
-
-            return;
-          }
-
-          const total = calculateEstimateValue();
-          const formattedTotal = formatPrice(total);
-
-          if (estimateRange) {
-            estimateRange.textContent = formattedTotal;
-          }
-
-          estimatedTotalField.value = formattedTotal;
-        }
-
-        function handleVehicleTypeChange() {
-          if (isFleetMode()) {
-            setFleetMode();
-          } else {
-            setStandardMode();
-          }
-        }
-
-        vehicleType.addEventListener("change", handleVehicleTypeChange);
-        vehicleSize.addEventListener("change", updateEstimate);
-        interiorCondition.addEventListener("change", updateEstimate);
-        petHairSandLevel.addEventListener("change", updateEstimate);
-        headlightRestoration.addEventListener("change", updateEstimate);
-        addonCheckboxes.forEach((checkbox) => checkbox.addEventListener("change", updateEstimate));
-
-        quoteForm.addEventListener("submit", async (event) => {
-          event.preventDefault();
-          updateEstimate();
-
-          if (submitButton) {
-            submitButton.disabled = true;
-            submitButton.textContent = "Sending...";
-          }
-
-          if (formStatus) {
-            formStatus.textContent = "";
-            formStatus.className = "form-status";
-          }
-
-          try {
-            const formData = new FormData(quoteForm);
-
-            if (isFleetMode()) {
-              formData.set("package", "Commercial / Fleet Quote");
-              formData.set("estimated_total", "Commercial quote required");
-            }
-
-            const response = await fetch(quoteForm.action, {
-              method: "POST",
-              body: formData,
-              headers: {
-                Accept: "application/json"
-              }
-            });
-
-            if (!response.ok) {
-              throw new Error("Submission failed");
-            }
-
-            const params = new URLSearchParams({
-              estimate: formData.get("estimated_total") || "",
-              vehicle: formData.get("vehicle") || "",
-              type: formData.get("vehicle_type") || ""
-            });
-
-            window.location.href = `thanks.html?${params.toString()}`;
-          } catch (error) {
-            if (formStatus) {
-              formStatus.textContent = "Something went wrong while submitting your quote. Please try again or call us directly.";
-              formStatus.className = "form-status error";
-            }
-
-            if (submitButton) {
-              submitButton.disabled = false;
-              submitButton.textContent = "Request Quote";
-            }
+        const response = await fetch(quoteForm.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json"
           }
         });
 
-        handleVehicleTypeChange();
-      })();
-    </script>
+        if (!response.ok) {
+          throw new Error("Submission failed");
+        }
+
+        const params = new URLSearchParams({
+          estimate: formData.get("estimated_total") || "",
+          vehicle: formData.get("vehicle") || "",
+          type: formData.get("quote_type") || ""
+        });
+
+        window.location.href = `thanks.html?${params.toString()}`;
+      } catch (error) {
+        if (formStatus) {
+          formStatus.textContent = "Something went wrong while submitting your quote. Please try again or call us directly.";
+          formStatus.className = "form-status error";
+        }
+
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = isFleetMode() ? "Request Fleet Quote" : "Request Quote";
+        }
+      }
+    });
+
+    handleFleetToggle();
+  })();
+</script>
       
     </body>
 </html>
